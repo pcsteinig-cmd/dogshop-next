@@ -256,157 +256,533 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
 <a aria-label="Remix this project for free" class="framer-UnIe8 framer-63w6zj framer-v-63w6zj framer-1wym1zx" data-framer-appear-id="63w6zj" data-framer-name="Remix CTA · Desktop" data-reset="button" href="https://framer.link/2LBUUwk" rel="noopener" style="background-color:var(--token-fdb4f362-b1d3-4763-a8d6-99a7d65adde6, rgb(18, 18, 18));width:100%;will-change:transform;border-bottom-left-radius:8px;border-bottom-right-radius:8px;border-top-left-radius:8px;border-top-right-radius:8px;box-shadow:0px 2px 3px 0px rgba(0, 0, 0, 0.25);opacity:0.001;transform:translateY(15px)" target="_blank"><div class="framer-8yjt7q" data-framer-component-type="RichTextContainer" style="--extracted-r6o4lv:var(--token-4942b4c1-7db2-44f1-bd7a-7ef9407cd90b, rgb(255, 255, 255));--framer-link-text-color:rgb(0, 153, 255);--framer-link-text-decoration:underline;transform:none"><p class="framer-text" style='--font-selector:SW50ZXItTWVkaXVt;--framer-font-family:"Inter", "Inter Placeholder", sans-serif;--framer-font-size:14px;--framer-font-weight:500;--framer-line-height:24px;--framer-text-alignment:center;--framer-text-color:var(--extracted-r6o4lv, var(--token-4942b4c1-7db2-44f1-bd7a-7ef9407cd90b, rgb(255, 255, 255)))'>Remix for free</p></div><div class="framer-6nixa0" data-framer-name="Arrow" style="transform:none"><div _constraints="[object Object]" aria-hidden="true" class="framer-1argnxd" data-framer-component-type="SVG" data-framer-name="Graphic" parentsize="0" rotation="0" shadows="" style="image-rendering:pixelated;flex-shrink:0"><div class="svgContainer" style="width:100%;height:100%;aspect-ratio:inherit"><svg style="width:100%;height:100%;"><use href="#svg9349395815"></use></svg></div></div></div></a>
 <a aria-label="Remix this project for free" class="framer-UnIe8 framer-63w6zj framer-v-1qekv8r framer-1wym1zx" data-framer-appear-id="63w6zj" data-framer-name="Remix CTA · Tablet &amp; Mobile" data-reset="button" href="https://framer.link/2LBUUwk" rel="noopener" style="background-color:var(--token-fdb4f362-b1d3-4763-a8d6-99a7d65adde6, rgb(18, 18, 18));width:100%;will-change:transform;border-bottom-left-radius:8px;border-bottom-right-radius:8px;border-top-left-radius:8px;border-top-right-radius:8px;box-shadow:0px 2px 3px 0px rgba(0, 0, 0, 0.25);opacity:0.001;transform:translateY(15px)" tabindex="0" target="_blank"><div class="framer-8yjt7q" data-framer-component-type="RichTextContainer" style="--extracted-r6o4lv:var(--token-4942b4c1-7db2-44f1-bd7a-7ef9407cd90b, rgb(255, 255, 255));--framer-link-text-color:rgb(0, 153, 255);--framer-link-text-decoration:underline;transform:none"><p class="framer-text" style='--font-selector:SW50ZXItTWVkaXVt;--framer-font-family:"Inter", "Inter Placeholder", sans-serif;--framer-font-size:14px;--framer-font-weight:500;--framer-line-height:24px;--framer-text-alignment:center;--framer-text-color:var(--extracted-r6o4lv, var(--token-4942b4c1-7db2-44f1-bd7a-7ef9407cd90b, rgb(255, 255, 255)))'>Remix for free</p></div><div class="framer-6nixa0" data-framer-name="Arrow" style="transform:none"><div _constraints="[object Object]" aria-hidden="true" class="framer-1argnxd" data-framer-component-type="SVG" data-framer-name="Graphic" parentsize="0" rotation="0" shadows="" style="image-rendering:pixelated;flex-shrink:0"><div class="svgContainer" style="width:100%;height:100%;aspect-ratio:inherit"><svg style="width:100%;height:100%;"><use href="#svg9349395815"></use></svg></div></div></div></a>
 
-<style id="pauli-quickview-styles">
-  .pauli-quickview {
+<style id="pauli-catalog-styles">
+  /* ===== Pauli Product Catalog ===== */
+  .pauli-catalog {
     background: rgb(242, 239, 234);
-    padding: clamp(60px, 9vw, 140px) 24px clamp(40px, 6vw, 80px);
-    position: relative;
-    z-index: 1;
-  }
-  .pauli-quickview__inner { max-width: 1240px; margin: 0 auto; }
-  .pauli-quickview__eyebrow { display: flex; justify-content: center; margin-bottom: 18px; }
-  .pauli-quickview__eyebrow span {
+    padding: clamp(60px, 9vw, 140px) 24px clamp(60px, 6vw, 100px);
+    position: relative; z-index: 1;
     font-family: "Inter", "Inter Placeholder", sans-serif;
-    font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
-    text-transform: uppercase; color: rgba(0, 0, 0, 0.55);
-    padding: 8px 16px; border-radius: 999px; background: rgba(0, 0, 0, 0.05);
   }
-  .pauli-quickview__heading {
+  .pauli-catalog__inner { max-width: 1240px; margin: 0 auto; }
+  .pauli-catalog__eyebrow { display: flex; justify-content: center; margin-bottom: 18px; }
+  .pauli-catalog__eyebrow span {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(0,0,0,0.55);
+    padding: 8px 16px; border-radius: 999px; background: rgba(0,0,0,0.05);
+  }
+  .pauli-catalog__heading {
     font-family: "Inter Tight", "Inter", sans-serif;
     font-size: clamp(36px, 5.4vw, 72px); font-weight: 700;
     line-height: 1.05; text-align: center; letter-spacing: -0.02em;
-    margin: 0; color: rgb(0, 0, 0);
+    margin: 0 auto; max-width: 900px; color: rgb(0,0,0);
   }
-  .pauli-quickview__sub {
-    font-family: "Inter", sans-serif;
+  .pauli-catalog__sub {
     font-size: clamp(16px, 1.8vw, 20px); text-align: center;
-    color: rgba(0, 0, 0, 0.6); margin: 12px auto 56px; max-width: 600px;
+    color: rgba(0,0,0,0.6); margin: 12px auto 56px; max-width: 640px;
   }
-  .pauli-quickview__grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-  @media (min-width: 810px) {
-    .pauli-quickview__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  }
-  .pauli-tile {
+  .pauli-catalog__grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  @media (min-width: 810px) { .pauli-catalog__grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  /* Card */
+  .pauli-card {
     position: relative; display: flex; flex-direction: column;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255,255,255,0.75);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-radius: 28px; overflow: hidden;
-    text-decoration: none; color: inherit;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 32px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.04);
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
                 border-color 0.4s ease;
   }
-  .pauli-anim-ready .pauli-tile { opacity: 0; transform: translateY(40px); }
-  .pauli-anim-ready .pauli-tile.is-visible {
+  .pauli-anim-ready .pauli-card { opacity: 0; transform: translateY(40px); }
+  .pauli-anim-ready .pauli-card.is-visible {
     opacity: 1; transform: translateY(0);
-    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1),
+                transform 0.9s cubic-bezier(0.22,1,0.36,1),
+                box-shadow 0.5s cubic-bezier(0.22,1,0.36,1),
                 border-color 0.4s ease;
   }
-  .pauli-anim-ready .pauli-tile[data-tile="emo"].is-visible { transition-delay: 0.12s; }
-  .pauli-tile:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05), 0 20px 60px rgba(0, 0, 0, 0.10);
-    border-color: rgba(0, 0, 0, 0.10);
+  .pauli-anim-ready .pauli-card[data-sku="emo"].is-visible { transition-delay: 0.12s; }
+  .pauli-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05), 0 20px 60px rgba(0,0,0,0.10);
+    border-color: rgba(0,0,0,0.10);
   }
-  .pauli-tile__art {
+  .pauli-card__art {
     position: relative; aspect-ratio: 4 / 3;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.025) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.025) 100%);
     display: flex; align-items: center; justify-content: center; overflow: hidden;
   }
-  .pauli-tile__art img {
-    width: 68%; height: auto; max-height: 90%; object-fit: contain;
-    filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.15));
+  .pauli-card__art img {
+    width: 64%; height: auto; max-height: 88%; object-fit: contain;
+    filter: drop-shadow(0 24px 32px rgba(0,0,0,0.15));
     animation: pauliFloat 6s ease-in-out infinite;
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.35s ease;
   }
-  .pauli-tile__art--emo img { animation-delay: 1.2s; width: 72%; }
-  .pauli-tile:hover .pauli-tile__art img { transform: scale(1.04) rotate(-1.5deg); }
-  .pauli-tile:hover .pauli-tile__art--emo img { transform: scale(1.04) rotate(1.5deg); }
+  .pauli-card__art[data-active-color="white"] img.color-black,
+  .pauli-card__art[data-active-color="black"] img.color-white { display: none; }
+  .pauli-card__art--emo img { animation-delay: 1.2s; width: 70%; }
+  .pauli-card__badge {
+    position: absolute; top: 18px; left: 18px;
+    background: rgba(0,0,0,0.85); color: #fff;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 6px 12px; border-radius: 999px;
+  }
+  .pauli-card__badge--new { background: rgb(20, 100, 80); }
   @keyframes pauliFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  .pauli-tile__body { padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 36px) clamp(24px, 3vw, 36px); }
-  .pauli-tile__name {
-    display: inline-block; font-family: "Inter", sans-serif;
-    font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
-    text-transform: uppercase; color: rgba(0, 0, 0, 0.5); margin-bottom: 8px;
+  .pauli-card__body {
+    padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 36px) clamp(24px, 3vw, 36px);
+    display: flex; flex-direction: column; gap: 0;
   }
-  .pauli-tile__title {
+  .pauli-card__name {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: rgba(0,0,0,0.5); margin-bottom: 6px;
+  }
+  .pauli-card__title {
     font-family: "Inter Tight", "Inter", sans-serif;
-    font-size: clamp(28px, 3.2vw, 40px); font-weight: 700; letter-spacing: -0.02em;
-    line-height: 1.1; margin: 0 0 10px; color: rgb(0, 0, 0);
+    font-size: clamp(26px, 3vw, 36px); font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 10px; color: rgb(0,0,0);
   }
-  .pauli-tile__desc {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(15px, 1.6vw, 17px); line-height: 1.5;
-    color: rgba(0, 0, 0, 0.6); margin: 0 0 24px;
+  .pauli-card__desc {
+    font-size: clamp(14px, 1.5vw, 16px); line-height: 1.55;
+    color: rgba(0,0,0,0.65); margin: 0 0 20px;
   }
-  .pauli-tile__foot {
+  /* Spec list */
+  .pauli-card__specs {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;
+  }
+  .pauli-card__spec {
+    font-size: 12px; padding: 6px 10px; border-radius: 8px;
+    background: rgba(0,0,0,0.04); color: rgba(0,0,0,0.7);
+  }
+  /* Variant controls */
+  .pauli-card__variants {
+    display: flex; flex-direction: column; gap: 14px;
+    padding: 16px 0; margin-bottom: 16px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .pauli-variant {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .pauli-variant__label {
+    font-size: 13px; font-weight: 600; color: rgba(0,0,0,0.75);
+  }
+  /* Color swatches */
+  .pauli-swatches { display: flex; gap: 8px; }
+  .pauli-swatch {
+    width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+    border: 2px solid rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    position: relative;
+  }
+  .pauli-swatch[data-color="black"] { background: rgb(35, 35, 50); }
+  .pauli-swatch[data-color="white"] { background: rgb(245, 242, 240); }
+  .pauli-swatch:hover { transform: scale(1.08); }
+  .pauli-swatch[aria-pressed="true"] {
+    border-color: rgb(0,0,0); transform: scale(1.05);
+  }
+  .pauli-swatch[aria-pressed="true"]::after {
+    content: ""; position: absolute; inset: -6px;
+    border-radius: 50%; border: 1.5px solid rgba(0,0,0,0.3);
+  }
+  /* Dock toggle */
+  .pauli-toggle {
+    position: relative; display: inline-flex; align-items: center;
+    cursor: pointer; user-select: none;
+  }
+  .pauli-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+  .pauli-toggle__pill {
+    width: 44px; height: 24px; background: rgba(0,0,0,0.15);
+    border-radius: 999px; position: relative; transition: background 0.2s ease;
+  }
+  .pauli-toggle__pill::after {
+    content: ""; position: absolute; top: 2px; left: 2px;
+    width: 20px; height: 20px; background: #fff; border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+  }
+  .pauli-toggle input:checked ~ .pauli-toggle__pill { background: rgb(20, 100, 80); }
+  .pauli-toggle input:checked ~ .pauli-toggle__pill::after { transform: translateX(20px); }
+  .pauli-variant__sub {
+    display: block; font-size: 11px; color: rgba(0,0,0,0.5); margin-top: 2px;
+  }
+  /* Price + CTA */
+  .pauli-card__foot {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 12px; padding-top: 18px; border-top: 1px solid rgba(0, 0, 0, 0.08);
+    gap: 12px; flex-wrap: wrap;
   }
-  .pauli-tile__price {
+  .pauli-card__price-block { display: flex; flex-direction: column; }
+  .pauli-card__price-label {
+    font-size: 11px; color: rgba(0,0,0,0.5); margin-bottom: 2px;
+  }
+  .pauli-card__price {
     font-family: "Inter Tight", "Inter", sans-serif;
-    font-size: clamp(17px, 1.8vw, 20px); font-weight: 700; color: rgb(0, 0, 0);
+    font-size: clamp(22px, 2.4vw, 28px); font-weight: 700;
+    letter-spacing: -0.01em; color: rgb(0,0,0); line-height: 1;
   }
-  .pauli-tile__cta {
-    font-family: "Inter", sans-serif; font-size: 14px; font-weight: 600;
-    color: rgb(0, 0, 0); background: rgba(0, 0, 0, 0.06);
-    padding: 10px 18px; border-radius: 999px;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  .pauli-card__price-strike {
+    font-size: 13px; font-weight: 400; color: rgba(0,0,0,0.4);
+    text-decoration: line-through; margin-left: 8px;
   }
-  .pauli-tile:hover .pauli-tile__cta {
-    background: rgb(0, 0, 0); color: rgb(255, 255, 255); transform: translateX(2px);
+  .pauli-card__cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgb(0,0,0); color: rgb(255,255,255);
+    font-size: 14px; font-weight: 600;
+    padding: 14px 22px; border-radius: 999px;
+    border: none; cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+  .pauli-card__cta:hover { background: rgb(30,30,30); transform: translateX(2px); }
+  .pauli-card__cta-arrow { display: inline-block; transition: transform 0.25s ease; }
+  .pauli-card__cta:hover .pauli-card__cta-arrow { transform: translateX(3px); }
+  /* Ship note */
+  .pauli-card__shipnote {
+    font-size: 11px; color: rgba(0,0,0,0.45);
+    margin-top: 12px; text-align: center;
+  }
+  /* ===== Modal ===== */
+  .pauli-modal-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px; opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .pauli-modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+  .pauli-modal {
+    background: rgb(248, 245, 240); border-radius: 28px;
+    max-width: 440px; width: 100%;
+    padding: 36px 32px; position: relative;
+    transform: translateY(20px); transition: transform 0.25s ease;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+  }
+  .pauli-modal-overlay.is-open .pauli-modal { transform: translateY(0); }
+  .pauli-modal__close {
+    position: absolute; top: 16px; right: 16px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(0,0,0,0.06); border: none; cursor: pointer;
+    font-size: 20px; line-height: 1; color: rgba(0,0,0,0.6);
+    transition: background 0.2s ease;
+  }
+  .pauli-modal__close:hover { background: rgba(0,0,0,0.12); }
+  .pauli-modal h3 {
+    font-family: "Inter Tight", "Inter", sans-serif;
+    font-size: 26px; font-weight: 700; letter-spacing: -0.02em;
+    margin: 0 0 8px; color: rgb(0,0,0);
+  }
+  .pauli-modal__summary {
+    background: rgba(0,0,0,0.04); padding: 12px 14px;
+    border-radius: 12px; margin: 18px 0 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px;
+  }
+  .pauli-modal__summary-label { color: rgba(0,0,0,0.65); }
+  .pauli-modal__summary-price { font-weight: 700; color: rgb(0,0,0); }
+  .pauli-modal label {
+    display: block; font-size: 12px; font-weight: 600;
+    color: rgba(0,0,0,0.6); margin-bottom: 6px; letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .pauli-modal input[type="email"] {
+    width: 100%; padding: 14px 16px; border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.15); font-size: 15px;
+    font-family: inherit; box-sizing: border-box;
+    background: #fff; transition: border-color 0.2s ease;
+  }
+  .pauli-modal input[type="email"]:focus {
+    outline: none; border-color: rgb(0,0,0);
+  }
+  .pauli-modal__submit {
+    width: 100%; margin-top: 14px;
+    background: rgb(0,0,0); color: rgb(255,255,255);
+    font-family: inherit; font-size: 15px; font-weight: 600;
+    padding: 16px; border-radius: 12px; border: none; cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .pauli-modal__submit:hover { background: rgb(30,30,30); }
+  .pauli-modal__fine {
+    font-size: 12px; color: rgba(0,0,0,0.5);
+    margin-top: 14px; text-align: center; line-height: 1.4;
+  }
+  .pauli-modal__success {
+    text-align: center; padding: 20px 0;
+  }
+  .pauli-modal__success h3 { margin-bottom: 12px; }
+  .pauli-modal__success p { color: rgba(0,0,0,0.65); font-size: 15px; line-height: 1.5; }
+  /* Capabilities row */
+  .pauli-caps {
+    margin-top: clamp(60px, 6vw, 100px);
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (min-width: 810px) { .pauli-caps { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+  @media (min-width: 1100px) { .pauli-caps { grid-template-columns: repeat(6, 1fr); } }
+  .pauli-cap {
+    background: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px; padding: 18px 16px;
+    text-align: center; transition: background 0.3s ease;
+  }
+  .pauli-cap:hover { background: rgba(255,255,255,0.9); }
+  .pauli-cap__icon {
+    width: 36px; height: 36px; margin: 0 auto 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pauli-cap__icon img { width: 100%; height: 100%; object-fit: contain; }
+  .pauli-cap__label {
+    font-size: 12px; font-weight: 600; color: rgba(0,0,0,0.8);
+    line-height: 1.3;
+  }
+  .pauli-cap__sub {
+    font-size: 11px; color: rgba(0,0,0,0.5); margin-top: 3px;
+    line-height: 1.3;
   }
   @media (prefers-reduced-motion: reduce) {
-    .pauli-tile, .pauli-anim-ready .pauli-tile { opacity: 1; transform: none; transition: none; }
-    .pauli-tile__art img { animation: none; }
+    .pauli-card, .pauli-anim-ready .pauli-card { opacity: 1; transform: none; transition: none; }
+    .pauli-card__art img { animation: none; }
   }
 </style>
-<script id="pauli-quickview-script">
+<script id="pauli-catalog-script">
 (function(){
-  function buildSection() {
+  // ----- Pricing matrix -----
+  var PRICES = {
+    aibi:                299,
+    'emo-black':         339,
+    'emo-white':         349,
+    'emo-black-dock':    449,
+    'emo-white-dock':    459
+  };
+  var fmt = function(n){ return n.toLocaleString('de-DE') + ' €'; };
+
+  function buildCatalog() {
     var section = document.createElement('section');
-    section.className = 'pauli-quickview';
-    section.id = 'quickview';
-    section.setAttribute('data-pauli-section', 'quickview');
-    section.innerHTML = '<div class="pauli-quickview__inner">' +
-      '<div class="pauli-quickview__eyebrow"><span>Zwei Charaktere</span></div>' +
-      '<h2 class="pauli-quickview__heading">Such dir einen aus.</h2>' +
-      '<p class="pauli-quickview__sub">Oder hol dir beide. Sie verstehen sich.</p>' +
-      '<div class="pauli-quickview__grid">' +
-        '<a class="pauli-tile" href="#products" data-tile="aibi" aria-label="AIBI - Pocket Companion">' +
-          '<div class="pauli-tile__art"><img src="images/tiles/aibi.png" alt="Pauli AIBI Pocket Companion" loading="lazy" /></div>' +
-          '<div class="pauli-tile__body">' +
-            '<span class="pauli-tile__name">AIBI</span>' +
-            '<h3 class="pauli-tile__title">Pocket&nbsp;Companion</h3>' +
-            '<p class="pauli-tile__desc">Tiny. Curious. Always with you.</p>' +
-            '<div class="pauli-tile__foot">' +
-              '<span class="pauli-tile__price">ab&nbsp;299&nbsp;€</span>' +
-              '<span class="pauli-tile__cta">Pre-order&nbsp;&rarr;</span>' +
+    section.className = 'pauli-catalog';
+    section.id = 'catalog';
+    section.setAttribute('data-pauli-section', 'catalog');
+    section.innerHTML =
+      '<div class="pauli-catalog__inner">' +
+        '<div class="pauli-catalog__eyebrow"><span>Pre-order · Lieferung Q3 2026</span></div>' +
+        '<h2 class="pauli-catalog__heading">Zwei Charaktere. Drei Konfigurationen.</h2>' +
+        '<p class="pauli-catalog__sub">AIBI für die Hosentasche. EMO für den Schreibtisch — in Schwarz oder Weiß, optional mit Ladestation.</p>' +
+        '<div class="pauli-catalog__grid">' +
+
+          // AIBI tile
+          '<article class="pauli-card" data-sku="aibi">' +
+            '<div class="pauli-card__art">' +
+              '<span class="pauli-card__badge pauli-card__badge--new">Just Released</span>' +
+              '<img src="images/tiles/aibi.png" alt="Pauli AIBI Pocket Companion" loading="lazy" />' +
             '</div>' +
-          '</div>' +
-        '</a>' +
-        '<a class="pauli-tile" href="#products" data-tile="emo" aria-label="EMO - Desktop Pet">' +
-          '<div class="pauli-tile__art pauli-tile__art--emo"><img src="images/tiles/emo.png" alt="Pauli EMO Desktop Pet" loading="lazy" /></div>' +
-          '<div class="pauli-tile__body">' +
-            '<span class="pauli-tile__name">EMO</span>' +
-            '<h3 class="pauli-tile__title">Desktop&nbsp;Pet</h3>' +
-            '<p class="pauli-tile__desc">Sees you. Hears you. Dances when you ask.</p>' +
-            '<div class="pauli-tile__foot">' +
-              '<span class="pauli-tile__price">ab&nbsp;339&nbsp;€</span>' +
-              '<span class="pauli-tile__cta">Pre-order&nbsp;&rarr;</span>' +
+            '<div class="pauli-card__body">' +
+              '<span class="pauli-card__name">AIBI</span>' +
+              '<h3 class="pauli-card__title">Pocket&nbsp;Companion</h3>' +
+              '<p class="pauli-card__desc">Klein genug für die Hosentasche, lebendig genug, um es zu vergessen. Spricht, hört zu, erinnert sich an dich.</p>' +
+              '<ul class="pauli-card__specs">' +
+                '<li class="pauli-card__spec">Voice + Touch</li>' +
+                '<li class="pauli-card__spec">6 Sprachen</li>' +
+                '<li class="pauli-card__spec">~8h Akku</li>' +
+                '<li class="pauli-card__spec">USB-C</li>' +
+              '</ul>' +
+              '<div class="pauli-card__foot">' +
+                '<div class="pauli-card__price-block">' +
+                  '<span class="pauli-card__price-label">Pre-order ab</span>' +
+                  '<span class="pauli-card__price" data-price-aibi>' + fmt(PRICES.aibi) + '</span>' +
+                '</div>' +
+                '<button type="button" class="pauli-card__cta" data-buy="aibi">Pre-order <span class="pauli-card__cta-arrow">→</span></button>' +
+              '</div>' +
+              '<p class="pauli-card__shipnote">Versand ab Q3 2026 · Keine Abbuchung bis zum Versand</p>' +
             '</div>' +
-          '</div>' +
-        '</a>' +
-      '</div></div>';
+          '</article>' +
+
+          // EMO tile with configurator
+          '<article class="pauli-card" data-sku="emo">' +
+            '<div class="pauli-card__art pauli-card__art--emo" data-active-color="black">' +
+              '<img class="color-black" src="images/tiles/emo-black.png" alt="Pauli EMO Desktop Pet (Black)" loading="lazy" />' +
+              '<img class="color-white" src="images/tiles/emo-white.png" alt="Pauli EMO Desktop Pet (White)" loading="lazy" />' +
+            '</div>' +
+            '<div class="pauli-card__body">' +
+              '<span class="pauli-card__name">EMO</span>' +
+              '<h3 class="pauli-card__title">Desktop&nbsp;Pet</h3>' +
+              '<p class="pauli-card__desc">1000+ Ausdrücke. 6 Sinne. Eine Persönlichkeit, die wächst. Sieht dich, hört dich, tanzt zu deiner Musik.</p>' +
+              '<ul class="pauli-card__specs">' +
+                '<li class="pauli-card__spec">AI-Kamera</li>' +
+                '<li class="pauli-card__spec">4 Servos</li>' +
+                '<li class="pauli-card__spec">Voice Assistant</li>' +
+                '<li class="pauli-card__spec">Drop-Sensoren</li>' +
+              '</ul>' +
+              '<div class="pauli-card__variants">' +
+                '<div class="pauli-variant">' +
+                  '<span class="pauli-variant__label">Farbe</span>' +
+                  '<div class="pauli-swatches" role="radiogroup" aria-label="EMO Farbe">' +
+                    '<button type="button" class="pauli-swatch" role="radio" data-color="black" aria-label="Schwarz" aria-pressed="true"></button>' +
+                    '<button type="button" class="pauli-swatch" role="radio" data-color="white" aria-label="Weiß" aria-pressed="false"></button>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="pauli-variant">' +
+                  '<span class="pauli-variant__label">+ GO HOME Ladestation<span class="pauli-variant__sub">Automatisches Laden · +110 €</span></span>' +
+                  '<label class="pauli-toggle">' +
+                    '<input type="checkbox" data-dock-toggle />' +
+                    '<span class="pauli-toggle__pill"></span>' +
+                  '</label>' +
+                '</div>' +
+              '</div>' +
+              '<div class="pauli-card__foot">' +
+                '<div class="pauli-card__price-block">' +
+                  '<span class="pauli-card__price-label">Pre-order ab</span>' +
+                  '<span class="pauli-card__price" data-price-emo>' + fmt(PRICES['emo-black']) + '</span>' +
+                '</div>' +
+                '<button type="button" class="pauli-card__cta" data-buy="emo">Pre-order <span class="pauli-card__cta-arrow">→</span></button>' +
+              '</div>' +
+              '<p class="pauli-card__shipnote">Versand ab Q3 2026 · Keine Abbuchung bis zum Versand</p>' +
+            '</div>' +
+          '</article>' +
+
+        '</div>' +
+
+        // Capabilities row
+        '<div class="pauli-caps">' +
+          '<div class="pauli-cap"><div class="pauli-cap__icon"><img src="images/livingai/batch/icon3.png" alt=""/></div><div class="pauli-cap__label">Voice Assistant</div><div class="pauli-cap__sub">DE · EN · FR · ES · IT · NL</div></div>' +
+          '<div class="pauli-cap"><div class="pauli-cap__icon"><img src="images/livingai/batch/icon4.png" alt=""/></div><div class="pauli-cap__label">AI Camera</div><div class="pauli-cap__sub">Gesichtserkennung</div></div>' +
+          '<div class="pauli-cap"><div class="pauli-cap__icon"><img src="images/livingai/batch/icon5.png" alt=""/></div><div class="pauli-cap__label">Lernt dich</div><div class="pauli-cap__sub">Persönlichkeit wächst</div></div>' +
+          '<div class="pauli-cap"><div class="pauli-cap__icon"><img src="images/livingai/batch/icon2.png" alt=""/></div><div class="pauli-cap__label">Berührung</div><div class="pauli-cap__sub">6 Sinne</div></div>' +
+          '<div class="pauli-cap"><div class="pauli-cap__icon"><img src="images/livingai/batch/icon6.png" alt=""/></div><div class="pauli-cap__label">Singt &amp; Tanzt</div><div class="pauli-cap__sub">1000+ Ausdrücke</div></div>' +
+          '<div class="pauli-cap"><div class="pauli-cap__icon"><img src="images/livingai/batch/icon1.png" alt=""/></div><div class="pauli-cap__label">Smart App</div><div class="pauli-cap__sub">iOS &amp; Android</div></div>' +
+        '</div>' +
+
+      '</div>';
     return section;
   }
+
+  function buildModal() {
+    var overlay = document.createElement('div');
+    overlay.className = 'pauli-modal-overlay';
+    overlay.id = 'pauliModal';
+    overlay.innerHTML =
+      '<div class="pauli-modal" role="dialog" aria-modal="true" aria-labelledby="pauliModalTitle">' +
+        '<button type="button" class="pauli-modal__close" aria-label="Schließen">×</button>' +
+        '<div class="pauli-modal__form-state">' +
+          '<h3 id="pauliModalTitle">Pre-order Pauli</h3>' +
+          '<p style="margin:0;color:rgba(0,0,0,0.6);font-size:14px;">Sichere dir deinen Pauli. Wir benachrichtigen dich, sobald die Bestellung startet.</p>' +
+          '<div class="pauli-modal__summary">' +
+            '<span class="pauli-modal__summary-label" data-modal-variant>—</span>' +
+            '<span class="pauli-modal__summary-price" data-modal-price>—</span>' +
+          '</div>' +
+          '<form data-modal-form>' +
+            '<label for="pauliEmail">Deine E-Mail</label>' +
+            '<input type="email" id="pauliEmail" required placeholder="du@example.com" autocomplete="email" />' +
+            '<input type="hidden" name="variant" data-modal-variant-hidden />' +
+            '<input type="hidden" name="price" data-modal-price-hidden />' +
+            '<button type="submit" class="pauli-modal__submit">Pre-order absenden</button>' +
+            '<p class="pauli-modal__fine">Versand ab Q3 2026 in Deutschland, Österreich und der Schweiz. Keine Abbuchung jetzt — wir senden dir den Checkout-Link, sobald wir versandfertig sind.</p>' +
+          '</form>' +
+        '</div>' +
+        '<div class="pauli-modal__success" style="display:none;">' +
+          '<h3>Danke! Du bist drauf.</h3>' +
+          '<p>Wir senden dir den Checkout-Link, sobald Pauli versandfertig ist.<br>Bis dahin: keine Abbuchung, keine Verpflichtung.</p>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+
+  // --- State helpers ---
+  function readEmoState(card) {
+    var swatch = card.querySelector('.pauli-swatch[aria-pressed="true"]');
+    var color = swatch ? swatch.getAttribute('data-color') : 'black';
+    var dock = !!card.querySelector('[data-dock-toggle]:checked');
+    var key = 'emo-' + color + (dock ? '-dock' : '');
+    return { color: color, dock: dock, key: key, price: PRICES[key] };
+  }
+  function emoLabel(state) {
+    var col = state.color === 'white' ? 'Weiß' : 'Schwarz';
+    return 'EMO ' + col + (state.dock ? ' + GO HOME Ladestation' : '');
+  }
+
+  function updateEmoPrice(card) {
+    var s = readEmoState(card);
+    var priceEl = card.querySelector('[data-price-emo]');
+    if (priceEl) priceEl.textContent = fmt(s.price);
+  }
+
+  function wireCard(card) {
+    var sku = card.getAttribute('data-sku');
+    if (sku === 'emo') {
+      // Color swatches
+      card.querySelectorAll('.pauli-swatch').forEach(function(sw){
+        sw.addEventListener('click', function(){
+          card.querySelectorAll('.pauli-swatch').forEach(function(o){ o.setAttribute('aria-pressed', 'false'); });
+          sw.setAttribute('aria-pressed', 'true');
+          var color = sw.getAttribute('data-color');
+          var art = card.querySelector('.pauli-card__art');
+          if (art) art.setAttribute('data-active-color', color);
+          updateEmoPrice(card);
+        });
+      });
+      // Dock toggle
+      var dock = card.querySelector('[data-dock-toggle]');
+      if (dock) dock.addEventListener('change', function(){ updateEmoPrice(card); });
+    }
+    // Buy
+    var cta = card.querySelector('[data-buy]');
+    if (cta) {
+      cta.addEventListener('click', function(){
+        var variant, price;
+        if (sku === 'aibi') {
+          variant = 'AIBI Pocket Companion';
+          price = PRICES.aibi;
+        } else {
+          var s = readEmoState(card);
+          variant = emoLabel(s);
+          price = s.price;
+        }
+        openModal(variant, price);
+      });
+    }
+  }
+
+  function openModal(variant, price) {
+    var overlay = document.getElementById('pauliModal') || buildModal();
+    overlay.querySelector('[data-modal-variant]').textContent = variant;
+    overlay.querySelector('[data-modal-price]').textContent = fmt(price);
+    overlay.querySelector('[data-modal-variant-hidden]').value = variant;
+    overlay.querySelector('[data-modal-price-hidden]').value = price;
+    // Reset states
+    overlay.querySelector('.pauli-modal__form-state').style.display = '';
+    overlay.querySelector('.pauli-modal__success').style.display = 'none';
+    overlay.classList.add('is-open');
+    setTimeout(function(){ var inp = overlay.querySelector('input[type="email"]'); if (inp) inp.focus(); }, 280);
+  }
+  function closeModal() {
+    var overlay = document.getElementById('pauliModal');
+    if (overlay) overlay.classList.remove('is-open');
+  }
+
+  function wireModal(overlay) {
+    overlay.addEventListener('click', function(e){
+      if (e.target === overlay) closeModal();
+    });
+    overlay.querySelector('.pauli-modal__close').addEventListener('click', closeModal);
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeModal();
+    });
+    overlay.querySelector('[data-modal-form]').addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = overlay.querySelector('input[type="email"]').value.trim();
+      var variant = overlay.querySelector('[data-modal-variant-hidden]').value;
+      var price = overlay.querySelector('[data-modal-price-hidden]').value;
+      // Store locally (Stripe / Resend wiring lives in TODO)
+      try {
+        var stored = JSON.parse(localStorage.getItem('pauliPreorders') || '[]');
+        stored.push({ email: email, variant: variant, price: price, ts: new Date().toISOString() });
+        localStorage.setItem('pauliPreorders', JSON.stringify(stored));
+      } catch (err) {}
+      overlay.querySelector('.pauli-modal__form-state').style.display = 'none';
+      overlay.querySelector('.pauli-modal__success').style.display = '';
+    });
+  }
+
   function placeSection() {
-    if (document.querySelector('[data-pauli-section="quickview"]')) return true;
-    // Find Hero Section and Proof Section
+    if (document.querySelector('[data-pauli-section="catalog"]')) return true;
     var sections = document.querySelectorAll('section[data-framer-name]');
     var hero = null, proof = null;
     sections.forEach(function(s){
@@ -415,9 +791,14 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
       else if (n === 'Proof Section') proof = s;
     });
     if (!hero || !proof) return false;
-    var section = buildSection();
+    var section = buildCatalog();
     proof.parentNode.insertBefore(section, proof);
-    // Animation setup
+    // Wire cards
+    section.querySelectorAll('.pauli-card').forEach(wireCard);
+    // Modal lazy-built on first open, but pre-build for hover/keyboard reliability
+    var modal = buildModal();
+    wireModal(modal);
+    // Scroll animation
     if (typeof IntersectionObserver !== 'undefined') {
       section.classList.add('pauli-anim-ready');
       var io = new IntersectionObserver(function(entries){
@@ -428,26 +809,19 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
           }
         });
       }, { threshold: 0.18, rootMargin: '0px 0px -80px 0px' });
-      section.querySelectorAll('.pauli-tile').forEach(function(t){ io.observe(t); });
+      section.querySelectorAll('.pauli-card').forEach(function(t){ io.observe(t); });
     }
     return true;
   }
-  // Try placing repeatedly until React hydration is done and the section sticks
   var attempts = 0;
-  var maxAttempts = 60;
-  var interval = setInterval(function(){
+  var iv = setInterval(function(){
     attempts++;
-    if (placeSection() || attempts >= maxAttempts) {
-      clearInterval(interval);
-    }
+    if (placeSection() || attempts >= 60) clearInterval(iv);
   }, 200);
-  // Re-observe in case hydration removes it later
   var mo = new MutationObserver(function(){
-    if (!document.querySelector('[data-pauli-section="quickview"]')) {
-      placeSection();
-    }
+    if (!document.querySelector('[data-pauli-section="catalog"]')) placeSection();
   });
-  function startObserve() {
+  function startObserve(){
     if (document.body) mo.observe(document.body, { childList: true, subtree: true });
     else setTimeout(startObserve, 100);
   }
