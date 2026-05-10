@@ -6,15 +6,17 @@ DACH distributor for **Living.AI** AI Companion products (AIBI Pocket + EMO + EM
 
 Positioning: **Apple + Pixar** aesthetic. AI Companion / digital creature with personality, NOT toy/gadget.
 
-## Products
+## Products (2 SKUs — corrected per user 2026-05-10)
+
+It's **two products**, not three. EMO GO HOME = EMO + charging dock accessory (variant of same SKU, not separate).
 
 | Product | Living.AI Price | DACH Pre-order | Status |
 |---------|-----------------|----------------|--------|
-| AIBI Pocket (Just Released) | $249 | 299 EUR | Hero / Card 1 |
-| EMO Black | $279 | 339 EUR | Card 2 |
-| EMO White | $289 | 349 EUR | Card 2 variant |
-| EMO GO HOME Black | $369 | 449 EUR | Gallery |
-| EMO GO HOME White | $379 | 459 EUR | Gallery |
+| **AIBI** (Pocket AI Companion) | $249 | 299 EUR | Hero left + Product Card 1 |
+| **EMO** (Desktop AI Pet, Black) | $279 | 339 EUR | Hero right + Product Card 2 |
+| EMO + GO HOME dock (variant) | $369 | 449 EUR | Upsell option on EMO card |
+
+Hero rule: **NO cord, NO pocket, NO strap on AIBI**. Show AIBI as a free-standing character (Pixar vibe) next to EMO.
 
 ## Section structure (Lego rule)
 
