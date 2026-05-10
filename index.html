@@ -93,7 +93,9 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
   URL=function(u,b){
     try{return new _U(u,b)}catch(e){
       if(b&&typeof b==='string'&&!b.includes('://')){
-        return new _U(u,location.origin+(b[0]==='/'?'':'/')+b);
+        // Use document URL (with subpath) as base, not just origin
+        var _basePath=location.pathname.replace(/[^/]*$/,'');
+        return new _U(u,location.origin+_basePath+(b[0]==='/'?b.substring(1):b));
       }
       throw e;
     }
