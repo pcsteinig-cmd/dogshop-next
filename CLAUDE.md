@@ -1,8 +1,12 @@
-# [BRAND] — Living.AI Distributor Pre-order Page
+# Pauli — Living.AI Distributor Pre-order Page
 
 ## Strategy
 
-DACH distributor for **Living.AI** AI Companion products (AIBI Pocket + EMO + EMO GO HOME). Higrate GmbH is the legal operator, brand name TBD ([BRAND] placeholder throughout).
+DACH distributor for **Living.AI** AI Companion products (AIBI Pocket + EMO, with optional GO HOME charging dock). Higrate GmbH is the legal operator.
+
+- **Brand name:** Pauli (set 2026-05-10) — friendly, name-like, fits "Companion not gadget" positioning
+- **Domain:** mypauli.ai (planned)
+- **Placeholder cleanup:** Global `[BRAND]` → `Pauli` rollout done — 60+ occurrences across HTML / JS bundles / blogs / legal pages. Only `CLAUDE.md` and `IMAGE-PLAN.md` still reference `[BRAND]` (kept as historical/planning docs).
 
 Positioning: **Apple + Pixar** aesthetic. AI Companion / digital creature with personality, NOT toy/gadget.
 
