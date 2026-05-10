@@ -7,6 +7,3 @@ node_modules/
 .vscode/
 .idea/
 *.bak
-js.before-livingai-pivot/
-*.before-livingai-pivot
-images/livingai/
