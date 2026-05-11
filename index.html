@@ -245,6 +245,52 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
   a[href*="framer.com/templates"], a[href*="framer.link"], a[href*="framer.com/marketplace"] { display: none !important; pointer-events: none !important; height: 0 !important; overflow: hidden !important; }
   .framer-13wmz3y-container, #__framer-badge-container, #__framer-template-badge-container { display: none !important; }
   [class*="framer-63w6zj"] { display: none !important; }
+  /* Hero product carousel: smooth fade + subtle scale */
+  img[src*="Q2Gqej"] {
+    transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1), transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    will-change: opacity, transform;
+  }
+  img[src*="Q2Gqej"].pauli-swapping { opacity: 0 !important; transform: scale(0.94); }
+  img[src*="Q2Gqej"].pauli-entering { transform: scale(1.08); }
 </style>
+<script>
+(function () {
+  var PRODUCTS = [
+    { src: 'images/livingai/hero/emo-padded.png', name: 'EMO' },
+    { src: 'images/livingai/hero/aibi-padded.png', name: 'AIBI' },
+    { src: 'images/livingai/hero/gohome-padded.png', name: 'EMO GO HOME' }
+  ];
+  // Preload all
+  PRODUCTS.forEach(function (p) { var i = new Image(); i.src = p.src; });
+
+  var idx = 0;
+  function findHero() {
+    return Array.from(document.querySelectorAll('img')).filter(function (el) {
+      var s = el.getAttribute('src') || '';
+      return s.indexOf('Q2Gqej') !== -1 || s.indexOf('livingai/hero/') !== -1;
+    });
+  }
+  function swap(imgs, next) {
+    imgs.forEach(function (img) {
+      img.classList.add('pauli-swapping');
+      setTimeout(function () {
+        img.setAttribute('src', next.src);
+        img.removeAttribute('srcset');
+        img.classList.remove('pauli-swapping');
+        img.classList.add('pauli-entering');
+        setTimeout(function () { img.classList.remove('pauli-entering'); }, 50);
+      }, 700);
+    });
+  }
+  function tick() {
+    var imgs = findHero();
+    if (!imgs.length) return;
+    idx = (idx + 1) % PRODUCTS.length;
+    swap(imgs, PRODUCTS[idx]);
+  }
+  // Start rotation after hero has hydrated
+  setTimeout(function () { setInterval(tick, 4200); }, 3500);
+})();
+</script>
 <!-- End of bodyEnd -->
 </body></html>
