@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static-site",
+      "runtimeExecutable": "/private/tmp/serve-dogshop.sh",
+      "runtimeArgs": [],
+      "port": 8000
+    }
+  ]
+}
