@@ -245,6 +245,17 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
   a[href*="framer.com/templates"], a[href*="framer.link"], a[href*="framer.com/marketplace"] { display: none !important; pointer-events: none !important; height: 0 !important; overflow: hidden !important; }
   .framer-13wmz3y-container, #__framer-badge-container, #__framer-template-badge-container { display: none !important; }
   [class*="framer-63w6zj"] { display: none !important; }
+  /* Typografie-Upgrade: Fraunces (Display) + Inter (Body) */
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&display=swap');
+  h1, h2, h3, .framer-text[class*="annra9"], [data-styles-preset="ZfkYyGwCo"], [data-styles-preset="LMNxAyrqj"], [class*="framer-styles-preset-annra9"] {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif !important;
+    font-feature-settings: 'ss01', 'ss02', 'opsz' 144 !important;
+    font-optical-sizing: auto !important;
+    letter-spacing: -0.018em !important;
+  }
+  [data-framer-name="Hero Section"] .framer-text {
+    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  }
   /* Hero product carousel: smooth fade + subtle scale */
   img[src*="Q2Gqej"] {
     transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1), transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1) !important;
