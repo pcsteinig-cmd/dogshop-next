@@ -648,37 +648,51 @@ if (!webGLAvailable()) {
     mount.__raf = requestAnimationFrame(loop);
   }
 
-  // Wait for Hero img, replace with Three.js mount
-  function tryMount() {
+  // Mount as fixed overlay (synced to hero img's position via requestAnimationFrame)
+  // — bypasses Framer's reconciler which clobbers DOM children of hydrated nodes
+  let mount = null, targetImg = null;
+  function ensureMount() {
     const heroImgs = Array.from(document.querySelectorAll('img')).filter(i => /Q2Gqej|livingai\/hero/.test(i.src));
     if (!heroImgs.length) return false;
-    const img = heroImgs[0];
-    const parent = img.parentElement;
-    if (!parent || parent.querySelector('.pauli-3d-mount')) return true;
-
-    const r = img.getBoundingClientRect();
+    targetImg = heroImgs[0];
+    const r = targetImg.getBoundingClientRect();
     if (r.width < 50) return false;
+    if (mount) return true;
 
-    // Hide the 2D image, insert 3D mount in its place
-    const mount = document.createElement('div');
+    mount = document.createElement('div');
     mount.className = 'pauli-3d-mount';
-    mount.style.position = 'absolute';
-    mount.style.inset = '0';
-    parent.appendChild(mount);
-    // Hide ALL hero imgs permanently (CSS only — no setInterval, no DOM mutation)
+    mount.style.cssText = 'position:fixed; pointer-events:auto; z-index:5;';
+    document.body.appendChild(mount);
+    // Hide hero imgs permanently
     const css = document.createElement('style');
     css.textContent = 'img[src*="Q2Gqej"], img[src*="livingai/hero/"] { opacity: 0 !important; visibility: hidden !important; }';
     document.head.appendChild(css);
-    // Flag carousel script to skip work
     window.__pauli3DActive = true;
     initScene(mount);
+    // Sync position/size each frame
+    function sync() {
+      if (!targetImg || !targetImg.isConnected) {
+        const fresh = Array.from(document.querySelectorAll('img')).filter(i => /Q2Gqej|livingai\/hero/.test(i.src))[0];
+        if (fresh) targetImg = fresh;
+      }
+      if (targetImg && targetImg.isConnected) {
+        const rr = targetImg.getBoundingClientRect();
+        mount.style.left = rr.left + 'px';
+        mount.style.top = rr.top + 'px';
+        mount.style.width = rr.width + 'px';
+        mount.style.height = rr.height + 'px';
+        mount.style.display = (rr.top < window.innerHeight && rr.bottom > 0) ? 'block' : 'none';
+      }
+      requestAnimationFrame(sync);
+    }
+    sync();
     return true;
   }
   // Retry until hero hydrated
   let tries = 0;
   const iv = setInterval(function () {
     tries++;
-    if (tryMount() || tries > 25) clearInterval(iv);
+    if (ensureMount() || tries > 25) clearInterval(iv);
   }, 400);
 }
 </script>
