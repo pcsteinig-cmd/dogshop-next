@@ -4,7 +4,7 @@
 set -e
 cd "$(dirname "$0")/.."
 
-LIVE_BASE="https://pcsteinig-cmd.github.io/dogshop-next"
+LIVE_BASE="https://mypauli.ai"
 LOCAL_HASH=$(md5 -q index.html)
 LIVE_HASH=$(curl -sS "$LIVE_BASE/index.html?cb=$(date +%s)" 2>/dev/null | md5)
 

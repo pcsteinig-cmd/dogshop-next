@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")/.."
 
 MSG="${1:-Polish update}"
-LIVE_BASE="https://pcsteinig-cmd.github.io/dogshop-next"
+LIVE_BASE="https://mypauli.ai"
 
 # Stage CHANGES to tracked files only (-u). Untracked files are NOT auto-staged
 # to avoid accidentally committing scratch dirs. To add new files, stage them
