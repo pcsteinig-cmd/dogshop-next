@@ -38,10 +38,10 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
     var _us=typeof u==='string'?u:(u&&u.href?u.href:(u&&u.url?u.url:''));
     if(_us&&/events\.framer\.com/.test(_us))
       return Promise.resolve(new Response(''));
-    // Handle .mjs range requests (cmsBackendCompression protocol).
+    // Handle .framercms range requests (cmsBackendCompression protocol).
     // Framer CDN extracts byte ranges server-side via ?range= param;
     // local servers return the full file, so we extract ranges client-side.
-    if(_us&&_us.indexOf('.mjs')!==-1){
+    if(_us&&_us.indexOf('.framercms')!==-1){
       try{
         var _OU=typeof _U!=='undefined'?_U:URL;
         var _p=new _OU(_us);
@@ -122,21 +122,21 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
     <!-- End of headStart -->
 	<meta name="viewport" content="width=device-width">
 	<meta name="generator" content="Framer b3492b4">
-	<title>loved – Smart Home Framer Template</title>
+	<title>Quora – Smart Home Framer Template</title>
     <meta name="description" content="Modern, responsive Framer template for smart home brands. Showcase products, features, and app integration with clean design and smooth interactions—perfect for tech-driven product launches. No code required.">
     
     <link href="/images/FlfmlnEapn6j7LAnqn3bfFL2Y0.svg" rel="icon" media="(prefers-color-scheme: light)">
     <link href="/images/FlfmlnEapn6j7LAnqn3bfFL2Y0.svg" rel="icon" media="(prefers-color-scheme: dark)">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="loved – Smart Home Framer Template">
+    <meta property="og:title" content="Quora – Smart Home Framer Template">
     <meta property="og:description" content="Modern, responsive Framer template for smart home brands. Showcase products, features, and app integration with clean design and smooth interactions—perfect for tech-driven product launches. No code required.">
-    <meta property="og:image" content="images/tHGVeys7qW7C2fdFVAcTSSx7Wc.png">
+    <meta property="og:image" content="/images/tHGVeys7qW7C2fdFVAcTSSx7Wc.png">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="loved – Smart Home Framer Template">
+    <meta name="twitter:title" content="Quora – Smart Home Framer Template">
     <meta name="twitter:description" content="Modern, responsive Framer template for smart home brands. Showcase products, features, and app integration with clean design and smooth interactions—perfect for tech-driven product launches. No code required.">
-    <meta name="twitter:image" content="images/tHGVeys7qW7C2fdFVAcTSSx7Wc.png">
+    <meta name="twitter:image" content="/images/tHGVeys7qW7C2fdFVAcTSSx7Wc.png">
 	<style data-framer-css-ssr="">
 		html, body, #main {
 		margin: 0;
