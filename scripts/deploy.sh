@@ -7,9 +7,14 @@ cd "$(dirname "$0")/.."
 MSG="${1:-Polish update}"
 LIVE_BASE="https://pcsteinig-cmd.github.io/dogshop-next"
 
-# Stage only HTML, JS, images, configs — never node_modules or build artefacts
-git add index.html "*.html" "js/**" "images/**" "assets/**" ".claude/**" "scripts/**" CNAME 2>/dev/null || true
-git add package.json package-lock.json 2>/dev/null || true
+# Stage CHANGES to tracked files only (-u). Untracked files are NOT auto-staged
+# to avoid accidentally committing scratch dirs. To add new files, stage them
+# manually first with `git add path/to/new-file` before running deploy.
+git add -u
+# Plus explicit allowlist: top-level config files that may be new
+for f in package.json package-lock.json CNAME .gitignore; do
+  [ -f "$f" ] && git add "$f" 2>/dev/null || true
+done
 
 # If nothing staged, abort
 if git diff --cached --quiet; then
