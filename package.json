@@ -1,0 +1,11 @@
+{
+  "name": "mypauli-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "myPauli.ai — Pauli AI Companion landing page (Framer Quora export, repurposed)",
+  "scripts": {
+    "dev": "npx --yes http-server -p 8001 -c-1 -s --cors -a 127.0.0.1 .",
+    "deploy": "./scripts/deploy.sh",
+    "verify": "./scripts/verify.sh"
+  }
+}
