@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "static-site",
-      "runtimeExecutable": "/private/tmp/serve-dogshop.sh",
-      "runtimeArgs": [],
-      "port": 8000
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["/Users/pcsteinig/Desktop/dogshop-next/.claude/serve-fixed.py"],
+      "autoPort": true
     }
   ]
 }
