@@ -299,8 +299,10 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
     idx = (idx + 1) % PRODUCTS.length;
     swap(imgs, PRODUCTS[idx]);
   }
-  // Start rotation after hero has hydrated
-  setTimeout(function () { setInterval(tick, 4200); }, 3500);
+  // Start rotation after hero has hydrated (skip if 3D scene is active)
+  setTimeout(function () {
+    window.__pauliCarouselInterval = setInterval(function () { if (!window.__pauli3DActive) tick(); }, 4200);
+  }, 3500);
 })();
 
 // Post-Hydration Translator — überschreibt Framer-Runtime-Englisch mit Deutsch
@@ -409,7 +411,8 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
     document.addEventListener('DOMContentLoaded', function () { setTimeout(loop, 600); setTimeout(loop, 1500); setTimeout(loop, 3000); });
   } else { setTimeout(loop, 600); setTimeout(loop, 1500); setTimeout(loop, 3000); }
   var mo = new MutationObserver(function () { clearTimeout(window.__paulit); window.__paulit = setTimeout(loop, 250); });
-  mo.observe(document.body, { childList: true, subtree: true, characterData: true });
+  // Observe only childList changes (not characterData) to avoid CPU thrash from animations
+  mo.observe(document.body, { childList: true, subtree: true });
 })();
 </script>
 
@@ -662,13 +665,12 @@ if (!webGLAvailable()) {
     mount.style.position = 'absolute';
     mount.style.inset = '0';
     parent.appendChild(mount);
-    img.style.opacity = '0';
-
-    // Stop the 2D carousel from swapping (set src to a marker)
-    setInterval(function () {
-      heroImgs.forEach(function (i) { i.style.opacity = '0'; });
-    }, 200);
-
+    // Hide ALL hero imgs permanently (CSS only — no setInterval, no DOM mutation)
+    const css = document.createElement('style');
+    css.textContent = 'img[src*="Q2Gqej"], img[src*="livingai/hero/"] { opacity: 0 !important; visibility: hidden !important; }';
+    document.head.appendChild(css);
+    // Flag carousel script to skip work
+    window.__pauli3DActive = true;
     initScene(mount);
     return true;
   }
