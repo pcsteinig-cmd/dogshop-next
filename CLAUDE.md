@@ -8,7 +8,7 @@ Eine Landing-Page für einen kleinen Roboterhund (Motutu/Moitutu-Klasse, 1688-Ha
 
 - **Aktuell:** Statische HTML-Seite (export aus Framer-Template „Quora")
 - **Soll:** Statisch hosten via Railway/Cloudflare/Netlify, Stripe Payment Link für Pre-order, Resend für Email-Capture
-- **Brand-Name:** TBD — überall im Code als `[BRAND]` als Platzhalter
+- **Brand-Name:** Pauli (Rollout in allen user-facing HTML-Files; `[BRAND]`-Platzhalter waren der Vorgänger-Zustand)
 - **Domain:** TBD
 - **Higrate GmbH** als rechtlicher Betreiber
 
