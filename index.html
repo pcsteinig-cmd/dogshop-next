@@ -412,5 +412,273 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
   mo.observe(document.body, { childList: true, subtree: true, characterData: true });
 })();
 </script>
+
+<!-- 3D Pauli-Charakter im Hero (Three.js) -->
+<style>
+  .pauli-3d-mount {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+  }
+  .pauli-3d-mount:active { cursor: grabbing; }
+  .pauli-3d-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: transparent;
+  }
+</style>
+<script type="module">
+import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+// Detect WebGL support; fall back to 2D carousel if not available
+function webGLAvailable() {
+  try {
+    var c = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+  } catch (e) { return false; }
+}
+
+if (!webGLAvailable()) {
+  console.warn('WebGL not available — staying on 2D carousel');
+} else {
+
+  function buildPauli() {
+    const group = new THREE.Group();
+
+    // Cream emissive base materials
+    const matBlack = new THREE.MeshStandardMaterial({ color: 0x1a1a1d, roughness: 0.4, metalness: 0.3 });
+    const matBody = new THREE.MeshStandardMaterial({ color: 0x222226, roughness: 0.5, metalness: 0.2 });
+    const matAccent = new THREE.MeshStandardMaterial({ color: 0x3c5a8a, roughness: 0.3, metalness: 0.5 });
+    const matEye = new THREE.MeshStandardMaterial({ color: 0x00e6e6, emissive: 0x00b8b8, emissiveIntensity: 1.2, roughness: 0.2, metalness: 0.1 });
+    const matBase = new THREE.MeshStandardMaterial({ color: 0x141417, roughness: 0.6, metalness: 0.4 });
+
+    // BODY (rounded box)
+    const bodyGeo = new THREE.BoxGeometry(1.2, 0.8, 0.8, 8, 8, 8);
+    const body = new THREE.Mesh(bodyGeo, matBody);
+    body.position.y = 0.4;
+    group.add(body);
+
+    // HEAD (slightly larger, sits on body)
+    const headGeo = new THREE.BoxGeometry(1.0, 0.85, 0.8, 8, 8, 8);
+    const head = new THREE.Mesh(headGeo, matBlack);
+    head.position.y = 1.3;
+    head.name = 'head';
+    group.add(head);
+
+    // FACE PLATE (slightly inset front of head, with subtle dark screen)
+    const faceGeo = new THREE.BoxGeometry(0.78, 0.65, 0.02);
+    const faceMat = new THREE.MeshStandardMaterial({ color: 0x0a0a0c, roughness: 0.15, metalness: 0.2 });
+    const face = new THREE.Mesh(faceGeo, faceMat);
+    face.position.set(0, 1.3, 0.41);
+    group.add(face);
+
+    // EYES (2 rounded cyan rectangles glowing)
+    const eyeGeo = new THREE.BoxGeometry(0.2, 0.22, 0.04);
+    const eyeL = new THREE.Mesh(eyeGeo, matEye);
+    eyeL.position.set(-0.18, 1.32, 0.43);
+    eyeL.name = 'eyeL';
+    group.add(eyeL);
+    const eyeR = new THREE.Mesh(eyeGeo, matEye);
+    eyeR.position.set(0.18, 1.32, 0.43);
+    eyeR.name = 'eyeR';
+    group.add(eyeR);
+
+    // HEADPHONE ARC (torus segment over head)
+    const arcGeo = new THREE.TorusGeometry(0.62, 0.07, 12, 32, Math.PI);
+    const arc = new THREE.Mesh(arcGeo, matAccent);
+    arc.position.y = 1.8;
+    arc.rotation.x = Math.PI;
+    group.add(arc);
+
+    // HEADPHONE PADS (left + right cylinders at head sides)
+    const padGeo = new THREE.CylinderGeometry(0.18, 0.18, 0.12, 24);
+    const padL = new THREE.Mesh(padGeo, matAccent);
+    padL.position.set(-0.6, 1.3, 0); padL.rotation.z = Math.PI / 2;
+    group.add(padL);
+    const padR = new THREE.Mesh(padGeo, matAccent);
+    padR.position.set(0.6, 1.3, 0); padR.rotation.z = Math.PI / 2;
+    group.add(padR);
+
+    // CAMERA DOT (top of head)
+    const camDotGeo = new THREE.SphereGeometry(0.04, 16, 16);
+    const camDotMat = new THREE.MeshStandardMaterial({ color: 0xff5e2b, emissive: 0xff3a0a, emissiveIntensity: 0.5 });
+    const camDot = new THREE.Mesh(camDotGeo, camDotMat);
+    camDot.position.set(0, 1.65, 0.4);
+    group.add(camDot);
+
+    // LEGS (small cylinders)
+    const legGeo = new THREE.CylinderGeometry(0.18, 0.16, 0.45, 16);
+    const legL = new THREE.Mesh(legGeo, matBody);
+    legL.position.set(-0.3, -0.05, 0.1);
+    group.add(legL);
+    const legR = new THREE.Mesh(legGeo, matBody);
+    legR.position.set(0.3, -0.05, 0.1);
+    group.add(legR);
+
+    // FEET (flat plates)
+    const footGeo = new THREE.BoxGeometry(0.4, 0.08, 0.5);
+    const footL = new THREE.Mesh(footGeo, matAccent);
+    footL.position.set(-0.3, -0.31, 0.18);
+    group.add(footL);
+    const footR = new THREE.Mesh(footGeo, matAccent);
+    footR.position.set(0.3, -0.31, 0.18);
+    group.add(footR);
+
+    // SKATEBOARD BASE
+    const baseGeo = new THREE.BoxGeometry(2.2, 0.1, 1.2, 8, 1, 4);
+    const base = new THREE.Mesh(baseGeo, matBase);
+    base.position.y = -0.4;
+    group.add(base);
+
+    return group;
+  }
+
+  function initScene(mount) {
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    const canvas = renderer.domElement;
+    canvas.className = 'pauli-3d-canvas';
+    mount.appendChild(canvas);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+    camera.position.set(0, 1.5, 5);
+    camera.lookAt(0, 0.8, 0);
+
+    // Lighting: soft cream key + cool back + ambient
+    const key = new THREE.DirectionalLight(0xfff2dc, 1.4);
+    key.position.set(3, 4, 4);
+    scene.add(key);
+    const back = new THREE.DirectionalLight(0xa8c4ff, 0.4);
+    back.position.set(-3, 2, -3);
+    scene.add(back);
+    const ambient = new THREE.AmbientLight(0xfaf7f2, 0.35);
+    scene.add(ambient);
+
+    // Pauli
+    const pauli = buildPauli();
+    scene.add(pauli);
+
+    // Resize handling
+    function resize() {
+      const w = mount.clientWidth;
+      const h = mount.clientHeight;
+      if (w > 0 && h > 0) {
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+    }
+    resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(mount);
+
+    // Mouse tracking + idle bob + eye blink
+    const targetRotY = { value: 0 };
+    const targetTilt = { value: 0 };
+    let mouseX = 0, mouseY = 0, hasInteracted = false;
+    function onMove(e) {
+      const r = mount.getBoundingClientRect();
+      mouseX = ((e.clientX - r.left) / r.width - 0.5);
+      mouseY = ((e.clientY - r.top) / r.height - 0.5);
+      hasInteracted = true;
+    }
+    window.addEventListener('mousemove', onMove);
+
+    // Animation loop
+    let blinkTime = 0;
+    let nextBlink = 3 + Math.random() * 3;
+    function loop(t) {
+      const time = t * 0.001;
+
+      // Idle: subtle bob + breathing
+      pauli.position.y = Math.sin(time * 0.9) * 0.04;
+      pauli.scale.y = 1 + Math.sin(time * 1.2) * 0.01;
+
+      // Target rotation: blend idle drift with mouse-look
+      if (hasInteracted) {
+        targetRotY.value = -mouseX * 0.6;
+        targetTilt.value = mouseY * 0.2;
+      } else {
+        targetRotY.value = Math.sin(time * 0.4) * 0.3;
+        targetTilt.value = Math.cos(time * 0.3) * 0.05;
+      }
+      pauli.rotation.y += (targetRotY.value - pauli.rotation.y) * 0.08;
+
+      // Head looks at cursor independently
+      const head = pauli.getObjectByName('head');
+      const face = pauli.children.find(c => c.geometry && c.geometry.parameters && c.geometry.parameters.width === 0.78);
+      if (head) {
+        const headRotX = targetTilt.value;
+        const headRotY = hasInteracted ? -mouseX * 0.3 : Math.sin(time * 0.5) * 0.2;
+        head.rotation.x += (headRotX - head.rotation.x) * 0.1;
+        head.rotation.y += (headRotY - head.rotation.y) * 0.1;
+        if (face) { face.rotation.x = head.rotation.x; face.rotation.y = head.rotation.y; }
+      }
+
+      // Eye blink
+      blinkTime += 0.016;
+      const eyeL = pauli.getObjectByName('eyeL');
+      const eyeR = pauli.getObjectByName('eyeR');
+      if (blinkTime > nextBlink) {
+        const phase = (blinkTime - nextBlink) / 0.18;
+        const s = phase < 0.5 ? 1 - phase * 2 : (phase - 0.5) * 2;
+        if (eyeL) eyeL.scale.y = Math.max(s, 0.06);
+        if (eyeR) eyeR.scale.y = Math.max(s, 0.06);
+        if (phase >= 1) {
+          if (eyeL) eyeL.scale.y = 1;
+          if (eyeR) eyeR.scale.y = 1;
+          blinkTime = 0;
+          nextBlink = 3 + Math.random() * 4;
+        }
+      }
+
+      renderer.render(scene, camera);
+      mount.__raf = requestAnimationFrame(loop);
+    }
+    mount.__raf = requestAnimationFrame(loop);
+  }
+
+  // Wait for Hero img, replace with Three.js mount
+  function tryMount() {
+    const heroImgs = Array.from(document.querySelectorAll('img')).filter(i => /Q2Gqej|livingai\/hero/.test(i.src));
+    if (!heroImgs.length) return false;
+    const img = heroImgs[0];
+    const parent = img.parentElement;
+    if (!parent || parent.querySelector('.pauli-3d-mount')) return true;
+
+    const r = img.getBoundingClientRect();
+    if (r.width < 50) return false;
+
+    // Hide the 2D image, insert 3D mount in its place
+    const mount = document.createElement('div');
+    mount.className = 'pauli-3d-mount';
+    mount.style.position = 'absolute';
+    mount.style.inset = '0';
+    parent.appendChild(mount);
+    img.style.opacity = '0';
+
+    // Stop the 2D carousel from swapping (set src to a marker)
+    setInterval(function () {
+      heroImgs.forEach(function (i) { i.style.opacity = '0'; });
+    }, 200);
+
+    initScene(mount);
+    return true;
+  }
+  // Retry until hero hydrated
+  let tries = 0;
+  const iv = setInterval(function () {
+    tries++;
+    if (tryMount() || tries > 25) clearInterval(iv);
+  }, 400);
+}
+</script>
 <!-- End of bodyEnd -->
 </body></html>
