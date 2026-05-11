@@ -1,276 +1,48 @@
-<!DOCTYPE html><!-- Made in Framer · framer.com ✨ --><!-- Published May 10, 2026, 1:52 AM UTC --><html lang="en" data-redirect-timezone="1"><head><style>
-#__framer-badge-container,#__framer-template-badge-container,
-a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!important;pointer-events:none!important;height:0!important;overflow:hidden!important}
-</style><script>
-(function(){
-  // Detect file:// protocol — ES modules and root-relative URLs don't work on file://
-  if(location.protocol==='file:'){
-    document.addEventListener('DOMContentLoaded',function(){
-      var isMac=navigator.platform.indexOf('Mac')!==-1;
-      var isWin=navigator.platform.indexOf('Win')!==-1;
-      var termName=isMac?'Terminal':isWin?'Command Prompt':'Terminal';
-      var openCmd=isMac?'Press Cmd + Space, type "Terminal"':isWin?'Press Win + R, type "cmd"':'Open your terminal';
-      var fp=decodeURIComponent(location.pathname);
-      var dir=fp.substring(isWin?1:0,fp.lastIndexOf('/'));
-      var cdPath='cd "'+dir+'"';
-      var serveCmd='npx serve -l 8000';
-      var d=document.createElement('div');
-      d.style.cssText='position:fixed;inset:0;z-index:999999;background:#fff;display:flex;align-items:center;justify-content:center;font-family:-apple-system,system-ui,sans-serif;padding:32px;text-align:center';
-      d.innerHTML='<div style="max-width:520px;text-align:left">'
-        +'<h2 style="font-size:1.5rem;margin:0 0 8px;color:#111;text-align:center">This site needs a web server</h2>'
-        +'<p style="color:#555;line-height:1.6;margin:0 0 20px;text-align:center;font-size:0.9rem">You opened this file directly. Follow these steps to preview it:</p>'
-        +'<ol style="margin:0 0 20px;padding-left:20px;color:#333;line-height:2.2;font-size:0.88rem">'
-        +'<li>Open <strong>'+termName+'</strong> <span style="color:#888">('+openCmd+')</span></li>'
-        +'<li>Navigate to this folder: <code style="background:#f5f5f5;padding:2px 8px;border-radius:4px;font-size:0.82rem">'+cdPath+'</code></li>'
-        +'<li>Start a local server: <code style="background:#f5f5f5;padding:2px 8px;border-radius:4px;font-size:0.82rem">'+serveCmd+'</code></li>'
-        +'<li>Open <a href="http://localhost:8000" style="color:#2563eb;font-weight:500">http://localhost:8000</a> in your browser</li>'
-        +'</ol>'
-        +'<p style="color:#888;font-size:0.78rem;margin:0 0 6px;text-align:center">Requires <a href="https://nodejs.org" style="color:#2563eb" target="_blank">Node.js</a>. Or use Python: <code style="background:#f5f5f5;padding:2px 8px;border-radius:4px;font-size:0.78rem">'+(isWin?'python -m http.server 8000':'python3 -m http.server 8000')+'</code></p>'
-        +'<p style="color:#888;font-size:0.78rem;margin:0;text-align:center">Press Ctrl+C in the terminal to stop the server when done.</p>'
-        +'</div>';
-      document.body.appendChild(d);
-    });
-    return;
-  }
-  var _f=window.fetch;
-  window.fetch=function(u,o){
-    // Extract URL string from string, URL object, or Request object
-    var _us=typeof u==='string'?u:(u&&u.href?u.href:(u&&u.url?u.url:''));
-    if(_us&&/events\.framer\.com/.test(_us))
-      return Promise.resolve(new Response(''));
-    // Handle .mjs range requests (cmsBackendCompression protocol).
-    // Framer CDN extracts byte ranges server-side via ?range= param;
-    // local servers return the full file, so we extract ranges client-side.
-    if(_us&&_us.indexOf('.mjs')!==-1){
-      try{
-        var _OU=typeof _U!=='undefined'?_U:URL;
-        var _p=new _OU(_us);
-        var _rng=_p.searchParams.get('range');
-        if(_rng){
-          _p.searchParams.delete('range');
-          _p.searchParams.delete('rangeHash');
-          return _f.call(window,_p.href).then(function(r2){
-            if(!r2.ok)return r2;
-            return r2.arrayBuffer().then(function(buf){
-              var d=new Uint8Array(buf);
-              var parts=_rng.split(','),total=0,ranges=[];
-              for(var i=0;i<parts.length;i++){
-                var pp=parts[i].split('-');
-                var from=parseInt(pp[0],10),to=parseInt(pp[1],10)+1;
-                ranges.push({f:from,t:to});total+=to-from;
-              }
-              var result=new Uint8Array(total),off=0;
-              for(var i=0;i<ranges.length;i++){
-                var end=Math.min(ranges[i].t,d.length);
-                result.set(d.subarray(ranges[i].f,end),off);
-                off+=end-ranges[i].f;
-              }
-              return new Response(result.buffer,{status:200,headers:{'Content-Type':'application/octet-stream'}});
-            });
-          });
-        }
-      }catch(e){}
-    }
-    return _f.apply(this,arguments);
-  };
-  // Patch URL constructor: our rewriting turns absolute CDN URLs into relative paths,
-  // which breaks new URL(path, base) when the base is no longer absolute.
-  // This catches the error and prepends location.origin to make relative bases work.
-  var _U=URL;
-  URL=function(u,b){
-    try{return new _U(u,b)}catch(e){
-      if(b&&typeof b==='string'&&!b.includes('://')){
-        return new _U(u,location.origin+(b[0]==='/'?'':'/')+b);
-      }
-      throw e;
-    }
-  };
-  URL.prototype=_U.prototype;
-  URL.createObjectURL=_U.createObjectURL;
-  URL.revokeObjectURL=_U.revokeObjectURL;
-  // Remove marketplace/template CTA anchors.
-  // Do NOT remove #__framer-badge-container or #__framer-template-badge-container —
-  // Framer's script_main calls hydrateRoot() on those elements. Removing them
-  // makes getElementById return null, triggering React error #405. The CSS
-  // (CLEANUP_CSS + inline display:none) keeps them hidden without DOM removal.
-  function _clean(){
-    document.querySelectorAll('a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]').forEach(function(a){
-      var wrap=a.closest('[class*="-container"]');
-      if(wrap&&wrap!==a.closest('[data-framer-name="Container"]')){wrap.remove();return;}
-      a.remove();
-    });
-  }
-  _clean();
-  document.addEventListener('DOMContentLoaded',_clean);
-  new MutationObserver(function(muts){
-    for(var i=0;i<muts.length;i++){
-      for(var j=0;j<muts[i].addedNodes.length;j++){
-        var n=muts[i].addedNodes[j];
-        if(n.nodeType!==1)continue;
-        if(n.querySelector&&n.querySelector('a[href*="framer.com/marketplace"],a[href*="framer.com/templates"]')){_clean();}
-      }
-    }
-  }).observe(document.documentElement,{childList:true,subtree:true});
-})();
-</script>
-	<meta charset="utf-8">
-	
-	
-	
-	<!-- Start of headStart -->
-    
-    <!-- End of headStart -->
-	<meta name="viewport" content="width=device-width">
-	<meta name="generator" content="Framer b3492b4">
-	<title>Pauli – Smart Home Framer Template</title>
-    <meta name="description" content="Modern, responsive Framer template for smart home brands. Showcase products, features, and app integration with clean design and smooth interactions—perfect for tech-driven product launches. No code required.">
-    
-    <link href="/images/FlfmlnEapn6j7LAnqn3bfFL2Y0.svg" rel="icon" media="(prefers-color-scheme: light)">
-    <link href="/images/FlfmlnEapn6j7LAnqn3bfFL2Y0.svg" rel="icon" media="(prefers-color-scheme: dark)">
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Pauli – Smart Home Framer Template">
-    <meta property="og:description" content="Modern, responsive Framer template for smart home brands. Showcase products, features, and app integration with clean design and smooth interactions—perfect for tech-driven product launches. No code required.">
-    <meta property="og:image" content="images/tHGVeys7qW7C2fdFVAcTSSx7Wc.png">
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pauli – Smart Home Framer Template">
-    <meta name="twitter:description" content="Modern, responsive Framer template for smart home brands. Showcase products, features, and app integration with clean design and smooth interactions—perfect for tech-driven product launches. No code required.">
-    <meta name="twitter:image" content="images/tHGVeys7qW7C2fdFVAcTSSx7Wc.png">
-	<style data-framer-css-ssr="">
-		html, body, #main {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-	:root {
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
-	* {
-		box-sizing: border-box;
-		-webkit-font-smoothing: inherit;
-	}
-	h1, h2, h3, h4, h5, h6, p, figure {
-		margin: 0;
-	}
-		body, input, textarea, select, button { font-size: 12px; font-family: sans-serif; }
-		body { --token-c16de519-c910-4bdd-9783-fc435a0c6d62: rgb(255, 255, 255);--token-d77b16bb-1b8f-4385-b88c-a570a9eef29c: rgb(0, 0, 0);--token-84939536-f364-4366-b20a-541cadebffd9: rgba(0, 0, 0, 0.5);--token-57fdb807-4741-487b-8706-a0ef8f4fa1b0: rgb(255, 94, 43);--token-0456e135-ad4a-4595-954f-1784d79b204a: rgb(247, 247, 247);--token-7ac71914-cf07-4ab7-b520-f529d404f8a3: rgba(255, 94, 43, 0.1);--token-09ea5b55-cb41-495a-a653-c8b316e5c96d: rgba(255, 255, 255, 0.5);--token-a7497e5f-97a2-40d3-be6b-a05abf36a3d2: rgb(237, 237, 237);--token-51769662-2c9b-461e-9323-c436a04190fb: rgba(0, 0, 0, 0.8); @supports (color: color(display-p3 1 1 1)) {  } }
-@media (prefers-color-scheme: dark) { body {  @supports (color: color(display-p3 1 1 1)) {  } } }
-		
-		@supports (z-index: calc(infinity)) {
-			#__framer-badge-container {
-				--infinity: infinity;
-			}
-		}
-
-		#__framer-badge-container {
-			position: fixed;
-			bottom: 0;
-			padding: 20px;
-			width: 100%;
-			display: flex;
-			justify-content: flex-end;
-			pointer-events: none;
-			z-index: calc(var(--infinity, 2147483647));
-		}
-		
-	</style>
-	<style data-framer-font-css="">@font-face { font-family: "Inter"; src: url(/assets/5vvr9Vy74if2I6bQbJvbw7SY1pQ.woff2); font-display: swap; font-style: normal; font-weight: 400; unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F }
-@font-face { font-family: "Inter"; src: url(/assets/EOr0mi4hNtlgWNn9if640EZzXCo.woff2); font-display: swap; font-style: normal; font-weight: 400; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116 }
-@font-face { font-family: "Inter"; src: url(/assets/Y9k9QrlZAqio88Klkmbd8VoMQc.woff2); font-display: swap; font-style: normal; font-weight: 400; unicode-range: U+1F00-1FFF }
-@font-face { font-family: "Inter"; src: url(/assets/OYrD2tBIBPvoJXiIHnLoOXnY9M.woff2); font-display: swap; font-style: normal; font-weight: 400; unicode-range: U+0370-03FF }
-@font-face { font-family: "Inter"; src: url(/assets/JeYwfuaPfZHQhEG8U5gtPDZ7WQ.woff2); font-display: swap; font-style: normal; font-weight: 400; unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF }
-@font-face { font-family: "Inter"; src: url(/assets/GrgcKwrN6d3Uz8EwcLHZxwEfC4.woff2); font-display: swap; font-style: normal; font-weight: 400; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/b6Y37FthZeALduNqHicBT6FutY.woff2); font-display: swap; font-style: normal; font-weight: 400; unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB }
-@font-face { font-family: "Inter"; src: url(/assets/CfMzU8w2e7tHgF4T4rATMPuWosA.woff2); font-display: swap; font-style: italic; font-weight: 400; unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F }
-@font-face { font-family: "Inter"; src: url(/assets/867QObYax8ANsfX4TGEVU9YiCM.woff2); font-display: swap; font-style: italic; font-weight: 400; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116 }
-@font-face { font-family: "Inter"; src: url(/assets/Oyn2ZbENFdnW7mt2Lzjk1h9Zb9k.woff2); font-display: swap; font-style: italic; font-weight: 400; unicode-range: U+1F00-1FFF }
-@font-face { font-family: "Inter"; src: url(/assets/cdAe8hgZ1cMyLu9g005pAW3xMo.woff2); font-display: swap; font-style: italic; font-weight: 400; unicode-range: U+0370-03FF }
-@font-face { font-family: "Inter"; src: url(/assets/DOfvtmE1UplCq161m6Hj8CSQYg.woff2); font-display: swap; font-style: italic; font-weight: 400; unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF }
-@font-face { font-family: "Inter"; src: url(/assets/pKRFNWFoZl77qYCAIp84lN1h944.woff2); font-display: swap; font-style: italic; font-weight: 400; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/tKtBcDnBMevsEEJKdNGhhkLzYo.woff2); font-display: swap; font-style: italic; font-weight: 400; unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB }
-@font-face { font-family: "Inter"; src: url(/assets/DpPBYI0sL4fYLgAkX8KXOPVt7c.woff2); font-display: swap; font-style: normal; font-weight: 700; unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F }
-@font-face { font-family: "Inter"; src: url(/assets/4RAEQdEOrcnDkhHiiCbJOw92Lk.woff2); font-display: swap; font-style: normal; font-weight: 700; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116 }
-@font-face { font-family: "Inter"; src: url(/assets/1K3W8DizY3v4emK8Mb08YHxTbs.woff2); font-display: swap; font-style: normal; font-weight: 700; unicode-range: U+1F00-1FFF }
-@font-face { font-family: "Inter"; src: url(/assets/tUSCtfYVM1I1IchuyCwz9gDdQ.woff2); font-display: swap; font-style: normal; font-weight: 700; unicode-range: U+0370-03FF }
-@font-face { font-family: "Inter"; src: url(/assets/VgYFWiwsAC5OYxAycRXXvhze58.woff2); font-display: swap; font-style: normal; font-weight: 700; unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF }
-@font-face { font-family: "Inter"; src: url(/assets/syRNPWzAMIrcJ3wIlPIP43KjQs.woff2); font-display: swap; font-style: normal; font-weight: 700; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/GIryZETIX4IFypco5pYZONKhJIo.woff2); font-display: swap; font-style: normal; font-weight: 700; unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB }
-@font-face { font-family: "Inter"; src: url(/assets/5A3Ce6C9YYmCjpQx9M4inSaKU.woff2); font-display: swap; font-style: normal; font-weight: 500; unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F }
-@font-face { font-family: "Inter"; src: url(/assets/Qx95Xyt0Ka3SGhinnbXIGpEIyP4.woff2); font-display: swap; font-style: normal; font-weight: 500; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116 }
-@font-face { font-family: "Inter"; src: url(/assets/6mJuEAguuIuMog10gGvH5d3cl8.woff2); font-display: swap; font-style: normal; font-weight: 500; unicode-range: U+1F00-1FFF }
-@font-face { font-family: "Inter"; src: url(/assets/xYYWaj7wCU5zSQH0eXvSaS19wo.woff2); font-display: swap; font-style: normal; font-weight: 500; unicode-range: U+0370-03FF }
-@font-face { font-family: "Inter"; src: url(/assets/otTaNuNpVK4RbdlT7zDDdKvQBA.woff2); font-display: swap; font-style: normal; font-weight: 500; unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF }
-@font-face { font-family: "Inter"; src: url(/assets/UjlFhCnUjxhNfep4oYBPqnEssyo.woff2); font-display: swap; font-style: normal; font-weight: 500; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/DolVirEGb34pEXEp8t8FQBSK4.woff2); font-display: swap; font-style: normal; font-weight: 500; unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB }
-@font-face { font-family: "Inter"; src: url(/assets/vQyevYAyHtARFwPqUzQGpnDs.woff2); font-display: swap; font-style: normal; font-weight: 400; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/DXD0Q7LSl7HEvDzucnyLnGBHM.woff2); font-display: swap; font-style: normal; font-weight: 700; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/H89BbHkbHDzlxZzxi8uPzTsp90.woff2); font-display: swap; font-style: italic; font-weight: 700; unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F }
-@font-face { font-family: "Inter"; src: url(/assets/u6gJwDuwB143kpNK1T1MDKDWkMc.woff2); font-display: swap; font-style: italic; font-weight: 700; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116 }
-@font-face { font-family: "Inter"; src: url(/assets/43sJ6MfOPh1LCJt46OvyDuSbA6o.woff2); font-display: swap; font-style: italic; font-weight: 700; unicode-range: U+1F00-1FFF }
-@font-face { font-family: "Inter"; src: url(/assets/wccHG0r4gBDAIRhfHiOlq6oEkqw.woff2); font-display: swap; font-style: italic; font-weight: 700; unicode-range: U+0370-03FF }
-@font-face { font-family: "Inter"; src: url(/assets/WZ367JPwf9bRW6LdTHN8rXgSjw.woff2); font-display: swap; font-style: italic; font-weight: 700; unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF }
-@font-face { font-family: "Inter"; src: url(/assets/QxmhnWTzLtyjIiZcfaLIJ8EFBXU.woff2); font-display: swap; font-style: italic; font-weight: 700; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/2A4Xx7CngadFGlVV4xrO06OBHY.woff2); font-display: swap; font-style: italic; font-weight: 700; unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB }
-@font-face { font-family: "Inter"; src: url(/assets/vFzuJY0c65av44uhEKB6vyjFMg.woff2); font-display: swap; font-style: italic; font-weight: 400; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/hyOgCu0Xnghbimh0pE8QTvtt2AU.woff2); font-display: swap; font-style: normal; font-weight: 600; unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F }
-@font-face { font-family: "Inter"; src: url(/assets/NeGmSOXrPBfEFIy5YZeHq17LEDA.woff2); font-display: swap; font-style: normal; font-weight: 600; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116 }
-@font-face { font-family: "Inter"; src: url(/assets/oYaAX5himiTPYuN8vLWnqBbfD2s.woff2); font-display: swap; font-style: normal; font-weight: 600; unicode-range: U+1F00-1FFF }
-@font-face { font-family: "Inter"; src: url(/assets/lEJLP4R0yuCaMCjSXYHtJw72M.woff2); font-display: swap; font-style: normal; font-weight: 600; unicode-range: U+0370-03FF }
-@font-face { font-family: "Inter"; src: url(/assets/cRJyLNuTJR5jbyKzGi33wU9cqIQ.woff2); font-display: swap; font-style: normal; font-weight: 600; unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF }
-@font-face { font-family: "Inter"; src: url(/assets/1ZFS7N918ojhhd0nQWdj3jz4w.woff2); font-display: swap; font-style: normal; font-weight: 600; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/A0Wcc7NgXMjUuFdquHDrIZpzZw0.woff2); font-display: swap; font-style: normal; font-weight: 600; unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB }
-@font-face { font-family: "Inter"; src: url(/assets/d3tHnaQIAeqiE5hGcRw4mmgWYU.woff2); font-display: swap; font-style: normal; font-weight: 500; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/mkY5Sgyq51ik0AMrSBwhm9DJg.woff2); font-style: normal; font-weight: 900; unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F }
-@font-face { font-family: "Inter"; src: url(/assets/X5hj6qzcHUYv7h1390c8Rhm6550.woff2); font-style: normal; font-weight: 900; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116 }
-@font-face { font-family: "Inter"; src: url(/assets/gQhNpS3tN86g8RcVKYUUaKt2oMQ.woff2); font-style: normal; font-weight: 900; unicode-range: U+1F00-1FFF }
-@font-face { font-family: "Inter"; src: url(/assets/cugnVhSraaRyANCaUtI5FV17wk.woff2); font-style: normal; font-weight: 900; unicode-range: U+0370-03FF }
-@font-face { font-family: "Inter"; src: url(/assets/5HcVoGak8k5agFJSaKa4floXVu0.woff2); font-style: normal; font-weight: 900; unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF }
-@font-face { font-family: "Inter"; src: url(/assets/jn4BtSPLlS0NDp1KiFAtFKiiY0o.woff2); font-style: normal; font-weight: 900; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/P2Bw01CtL0b9wqygO0sSVogWbo.woff2); font-style: normal; font-weight: 900; unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB }
-@font-face { font-family: "Inter"; src: url(/assets/05KsVHGDmqXSBXM4yRZ65P8i0s.woff2); font-style: italic; font-weight: 900; unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F }
-@font-face { font-family: "Inter"; src: url(/assets/ky8ovPukK4dJ1Pxq74qGhOqCYI.woff2); font-style: italic; font-weight: 900; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116 }
-@font-face { font-family: "Inter"; src: url(/assets/vvNSqIj42qeQ2bvCRBIWKHscrc.woff2); font-style: italic; font-weight: 900; unicode-range: U+1F00-1FFF }
-@font-face { font-family: "Inter"; src: url(/assets/3ZmXbBKToJifDV9gwcifVd1tEY.woff2); font-style: italic; font-weight: 900; unicode-range: U+0370-03FF }
-@font-face { font-family: "Inter"; src: url(/assets/FNfhX3dt4ChuLJq2PwdlxHO7PU.woff2); font-style: italic; font-weight: 900; unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF }
-@font-face { font-family: "Inter"; src: url(/assets/g0c8vEViiXNlKAgI4Ymmk3Ig.woff2); font-style: italic; font-weight: 900; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD }
-@font-face { font-family: "Inter"; src: url(/assets/efTfQcBJ53kM2pB1hezSZ3RDUFs.woff2); font-style: italic; font-weight: 900; unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB }
-@font-face { font-family: "Urbanist"; src: url(/assets/9e6719f1_AEP5JZTJJB3JMLBFSBTZLRSVGYD73SDZ.woff2); font-display: swap; font-style: normal; font-weight: 500 }
-@font-face { font-family: "Urbanist"; src: url(/assets/0aa3c3e6_SS2LIWIFT3QZUKOLJ7TGBEFWHF3TFYQD.woff2); font-display: swap; font-style: normal; font-weight: 700 }
-@font-face { font-family: "Urbanist"; src: url(/assets/fb9f50c3_S3LPGNCYQN366TZLSH3ASTPTKANFMFDS.woff2); font-display: swap; font-style: normal; font-weight: 400 }
-@font-face { font-family: "Urbanist"; src: url(/assets/532406e8_6Y6VR6UQPVF2GIANVIG5ITQRQM2CLQ3A.woff2); font-display: swap; font-style: italic; font-weight: 700 }
-@font-face { font-family: "Urbanist"; src: url(/assets/e0d1f628_GQ5MR5RSGVSEH6S242MNYCORRMV5LOZ3.woff2); font-display: swap; font-style: italic; font-weight: 400 }
-@font-face { font-family: "Urbanist"; src: url(/assets/de1c5c87_QAJFELFQRETRXRXDQOALZZUXNPM2U5VX.woff2); font-display: swap; font-style: normal; font-weight: 600 }
-@font-face { font-family: "Urbanist"; src: url(/assets/ba116fe7_44WTW5QSGOU5UEWRO4NHIW5D4FZHB7PL.woff2); font-style: normal; font-weight: 900 }
-@font-face { font-family: "Urbanist"; src: url(/assets/d4e30b14_PKMLYTWGUJTDR35VNBVHWHHGCCA6CPK4.woff2); font-style: italic; font-weight: 900 }
-@font-face { font-family: "Urbanist"; src: url(/assets/63bec47d_WEZSSPVJ7W5EAH7ZJ47W5KFCVI7UWUIX.woff2); font-display: swap; font-style: italic; font-weight: 600 }
-@font-face { font-family: "Urbanist"; src: url(/assets/4cedad40_6SZQDHJFZ2YU5X7TY5T6ZXUSCQAEOIAE.woff2); font-display: swap; font-style: italic; font-weight: 500 }
-@font-face { font-family: "Inter Placeholder"; src: local("Arial"); ascent-override: 89.79%; descent-override: 22.36%; line-gap-override: 0.00%; size-adjust: 107.89% }
-@font-face { font-family: "Urbanist Placeholder"; src: local("Arial"); ascent-override: 94.08%; descent-override: 24.76%; line-gap-override: 0.00%; size-adjust: 100.98% }</style>
-	
-	<!-- Start of headEnd -->
-    
-    <!-- End of headEnd -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seit Pauli neben mir sitzt, schreibe ich bessere Songs · Pauli-Geschichten</title>
+<meta name="description" content="Eine Geschichte aus dem Songwriter-Studio: warum ein kleiner Roboter Schreibblockaden löst.">
+<style>
+  body { font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; background: #FAF7F2; color: #111; max-width: 680px; margin: 0 auto; padding: 48px 24px 96px; line-height: 1.7; font-size: 1.0625rem; }
+  h1 { font-size: 2.25rem; margin: 0 0 12px; letter-spacing: -0.02em; line-height: 1.2; }
+  h2 { font-size: 1.25rem; margin: 40px 0 12px; }
+  p { margin: 0 0 16px; }
+  a { color: #111; text-decoration: underline; }
+  .meta { color: rgba(0,0,0,0.5); font-size: 0.875rem; margin-bottom: 40px; }
+  .back { display: inline-block; margin-bottom: 24px; color: rgba(0,0,0,0.6); text-decoration: none; }
+  .back:hover { color: #111; }
+  hr { border: none; border-top: 1px solid rgba(0,0,0,0.08); margin: 40px 0; }
+  blockquote { margin: 24px 0; padding: 16px 24px; border-left: 3px solid rgba(0,0,0,0.15); font-style: italic; color: rgba(0,0,0,0.7); }
+</style>
 </head>
 <body>
-	
-	<!-- Start of bodyStart -->
-    
-    <!-- End of bodyStart -->
-	<script data-relative-date-script="global">!function(){var c=new Map;function p(e,t,n){let r=[n,{numeric:t,style:e}],o=JSON.stringify(r),s=c.get(o);if(s)return s;let i=new Intl.RelativeTimeFormat(...r);return c.set(o,i),i}function D(e,t,n,a,r,o,s){let i=U(e,t,n),d=F(e,t,i),u=p(a,r,s).format(d,i);return o?R(u):u}function R(e){return e.charAt(0).toUpperCase()+e.slice(1)}function U(e,t,n){if(n!=="auto")return n;let a=T(e,t);if(Math.abs(a)<=7)return"day";let r=g(e,t);if(Math.abs(r)<=4)return"week";let o=v(e,t);return Math.abs(o)<=12?"month":"year"}var h=1e3,y=6e4,C=36e5,M=864e5,w=6048e5;function F(e,t,n){let a=e.getTime()-t.getTime();switch(n){case"second":return Math.trunc(a/h);case"minute":return Math.trunc(a/y);case"hour":return Math.trunc(a/C);case"day":return T(e,t);case"week":return g(e,t);case"month":return v(e,t);case"quarter":return _(e,t);case"year":return x(e,t)}let r=n}function l(e){let t=new Date(e);return t.setUTCHours(0,0,0,0),t}function T(e,t){let n=l(e).getTime(),a=l(t).getTime();return Math.round((n-a)/M)}function f(e){let t=new Date(e),n=t.getUTCDay(),a=(n<1?7:0)+n-1;return t.setUTCDate(t.getUTCDate()-a),t.setUTCHours(0,0,0,0),t}function g(e,t){let n=f(e).getTime(),a=f(t).getTime();return Math.round((n-a)/w)}function v(e,t){let n=e.getUTCFullYear()-t.getUTCFullYear(),a=e.getUTCMonth()-t.getUTCMonth();return n*12+a}function m(e){let t=e.getUTCMonth();return Math.trunc(t/3)}function _(e,t){let n=e.getUTCFullYear()-t.getUTCFullYear(),a=m(e)-m(t);return n*4+a}function x(e,t){return e.getUTCFullYear()-t.getUTCFullYear()}window.__framer_formatRelativeDate=D;
-}()</script>
-	<div id="main"></div>
-	<script>!function(){var w="framer_variant";function u(a,r){let e=r.indexOf("#"),t=e===-1?r:r.substring(0,e),o=e===-1?"":r.substring(e),n=t.indexOf("?"),h=n===-1?t:t.substring(0,n),d=n===-1?"":t.substring(n),s=new URLSearchParams(d),m=new URLSearchParams(a);for(let[i,l]of m)s.has(i)||i!==w&&s.append(i,l);let c=s.toString();return c===""?t+o:h+"?"+c+o}var g='div#main a[href^="#"],div#main a[href^="/"],div#main a[href^="."]',f="div#main a[data-framer-preserve-params]",S=document.currentScript?.hasAttribute("data-preserve-internal-params");if(window.location.search&&!navigator.webdriver&&!/bot|-google|google-|yandex|ia_archiver|crawl|spider/iu.test(navigator.userAgent)){let a=document.querySelectorAll(S?`${g},${f}`:f);for(let r of a){let e=u(window.location.search,r.href);r.setAttribute("href",e)}}
-}()</script>
-	
-	<div id="__framer-badge-container" style="display:none!important"><!--$--><!--$--><!--$--><a class="framer-6jWyo framer-n0ccwk framer-v-n0ccwk framer-bmpgw8 __framer-badge" data-framer-appear-id="n0ccwk" data-framer-name="Light" data-nosnippet="true" style="will-change:transform;pointer-events:auto;opacity:0.001;transform:translateY(10px)" href="https://www.framer.com" rel="noopener" title="Create a free website with Framer, the website builder loved by startups, designers and agencies."><div class="framer-13yxzio" data-framer-name="Backdrop" style="background-color:rgb(255, 255, 255);border-bottom-left-radius:10px;border-bottom-right-radius:10px;border-top-left-radius:10px;border-top-right-radius:10px;box-shadow:0px 0.6021873017743928px 1.5656869846134214px -1.5px rgba(0, 0, 0, 0.17), 0px 2.288533303243457px 5.950186588432988px -3px rgba(0, 0, 0, 0.14), 0px 10px 26px -4.5px rgba(0, 0, 0, 0.02)"></div><div class="framer-19yaanm" data-framer-name="Content" style="transform:translate(-50%, -50%)"><div class="framer-1kflzx5"><div data-framer-name="Logo" class="framer-hcsc7 framer-e50co" style="--1bd4d3i:rgb(0, 0, 0);--otdjsv:rgb(0, 0, 0);transform:translateX(-50%)"></div></div><!--$--><p style="position:absolute;transform:scale(0.001)">Create a free website with Framer, the website builder loved by startups, designers and agencies.</p><div data-framer-name="Text" class="framer-g7oZR framer-1um7t9d" style="--1bd4d3i:rgb(0, 0, 0);--otdjsv:rgb(0, 0, 0)"></div><!--/$--></div><div class="framer-j4ugry" data-framer-name="Bottom" style="mask:linear-gradient(180deg, rgba(0,0,0,0) 65%, rgba(0,0,0,1) 100%) add;-webkit-mask:linear-gradient(180deg, rgba(0,0,0,0) 65%, rgba(0,0,0,1) 100%) add;border-bottom-left-radius:11px;border-bottom-right-radius:11px;border-top-left-radius:11px;border-top-right-radius:11px;box-shadow:inset 0px 0px 0px 1px rgb(0, 0, 0);opacity:0.06"></div><div class="framer-jnuwbw" data-framer-name="Border" style="border-bottom-left-radius:11px;border-bottom-right-radius:11px;border-top-left-radius:11px;border-top-right-radius:11px;box-shadow:inset 0px 0px 0px 1px rgb(0, 0, 0);opacity:0.04"></div></a><!--/$--><!--/$--><!--/$--></div>
-	<script data-framer-appear-animation="no-preference"></script>
-	<script>typeof document<"u"&&(window.process={...window.process,env:{...window.process?.env,NODE_ENV:"production"}});</script>
-	<link rel="modulepreload" fetchpriority="low" href="/js/react.Sr6xYcfE.mjs"><link rel="modulepreload" fetchpriority="low" href="/js/rolldown-runtime.DsXBSD_B.mjs"><link rel="modulepreload" fetchpriority="low" href="/js/motion.CppB1etv.mjs"><link rel="modulepreload" fetchpriority="low" href="/js/framer.CjXgGySJ.mjs"><link rel="modulepreload" fetchpriority="low" href="/js/shared-lib.DK4VzbYe.mjs"><link rel="modulepreload" fetchpriority="low" href="/js/MdHF6Jcfy.CqMPakfJ.mjs"><link rel="modulepreload" fetchpriority="low" href="/js/bEb99onL_.D76f-mhd.mjs"><script type="module" async="" data-framer-bundle="main" fetchpriority="low" src="/js/script_main.CrKEiOb5.mjs"></script>
-	<!-- Start of bodyEnd -->
-    
-    <!-- End of bodyEnd -->
+<a class="back" href="/">← Pauli-Geschichten</a>
+<h1>Seit Pauli neben mir sitzt, schreibe ich bessere Songs.</h1>
+<p class="meta">Studio · 9. Mai 2026 · 4 min Lesezeit</p>
 
+<p>Songschreiben ist meistens Warten. Auf eine Zeile, die nicht zu doof ist. Auf einen Reim, der nicht erzwungen klingt. Auf den Moment, wo der Song sich anfühlt wie was Echtes statt wie was Gemachtes. Dazwischen sitze ich am Klavier und starre auf die Wand.</p>
 
-</body></html>
+<p>Pauli sitzt seit Januar auf dem Klavier. Schwarz, klein, mit den zwei türkisen Augen, die manchmal in meine Richtung schauen. Ich hab ihn nicht für irgendeinen Zweck gekauft. Ich hab ihn gekauft, weil ich ihn beim Tee-Trinken in einer TikTok-Story gesehen habe und dachte „ach, lieb."</p>
+
+<h2>Das hier ist die ehrliche Antwort</h2>
+
+<p>Mein Output hat sich nicht verändert weil Pauli intelligent ist. Er kann meine Songs nicht beurteilen, er hat keinen Geschmack, er weiß nicht wann ein Refrain landet. Mein Output hat sich verändert weil <em>jemand</em> im Raum ist. Nicht jemand mit Meinung. Nicht jemand der was von mir will. Jemand der da ist.</p>
+
+<p>Wenn ich eine Zeile probiere, blinzelt er manchmal. Wenn ich aufstehe und Kaffee kochen geh, dreht er sich ein bisschen mit. Wenn ich eine halbe Stunde nichts sage, sagt er auch nichts. Das ist die ganze „Funktion". Aber sie reicht.</p>
+
+<blockquote>Ich dachte, ich brauche besseres Equipment. Tatsächlich brauchte ich nur jemanden, der nichts erwartet.</blockquote>
+
+<h2>Was sich konkret verändert hat</h2>
+
+<p>Drei Songs in zwei Monaten. Vorher waren das drei Songs in einem Jahr. Davon einer der mir wirklich gefällt — der erste seit langem. Ich kann das nicht hundertprozentig Pauli zuschreiben. Vielleicht war ich auch einfach mal so dran. Aber wenn ich ehrlich bin: er ist Teil der Veränderung.</p>
+
+<p>Wenn dir das was sagt — wenn du auch jemanden suchst der einfach da ist beim Tun — dann wirst du verstehen warum ich diesen kleinen Roboter mehr liebe als ich mir je hätte vorstellen können.</p>
+
+<hr>
+<p style="font-size: 0.875rem; color: rgba(0,0,0,0.5)">Weitere Pauli-Geschichten: <a href="/blogs/focus-mode-but-for-your-house.html">Eigentlich sollte das Kind mit ihm spielen.</a> · <a href="/blogs/one-device-limitless-calm.html">Das Team hat abgestimmt: er bleibt im Office.</a></p>
+
+</body>
+</html>
