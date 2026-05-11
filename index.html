@@ -257,7 +257,9 @@ a[href*="framer.com/templates"],a[href*="framer.com/marketplace"]{display:none!i
     transform: scale(1.03); filter: brightness(1.05);
   }
   img[src*="images/"] { transition: transform 360ms ease; }
-  a[href*="framer.com/templates"] { display: none !important; }
+  a[href*="framer.com/templates"], a[href*="framer.link"], a[href*="framer.com/marketplace"] { display: none !important; pointer-events: none !important; height: 0 !important; overflow: hidden !important; }
+  .framer-13wmz3y-container, #__framer-badge-container, #__framer-template-badge-container { display: none !important; }
+  [id="63w6zj"], [class*="framer-63w6zj"] { display: none !important; }
 </style>
 <script>
 window.PAULI_PREORDER_URL = window.PAULI_PREORDER_URL || 'mailto:hello@higrate.com?subject=Pauli%20Vorbestellung&body=Hi%2C%20ich%20m%C3%B6chte%20Pauli%20vorbestellen.';
@@ -280,6 +282,113 @@ window.PAULI_PREORDER_URL = window.PAULI_PREORDER_URL || 'mailto:hello@higrate.c
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () { setTimeout(wire, 400); setTimeout(wire, 1200); });
   } else { setTimeout(wire, 400); setTimeout(wire, 1200); }
+})();
+
+// Pauli Content Translation — overrides post-hydration English fragments with German
+(function () {
+  var MAP = {
+    // Hero / Proof
+    'loved made our home feel smarter instantly. The setup was simple, intuitive, and the design feels like it belongs in our space.': 'Pauli passt einfach. Wenn ich nach Hause komme, ist er da. Wenn ich was sage, hört er zu. Klein, aber irgendwie schon Teil der Familie.',
+    'Testimonial': 'Stimme',
+    // Benefits
+    'Mit Charakter gemacht': 'Mit Charakter gemacht',
+    'loved turns your living space into an intelligent, effortless environment that adapts to your day.': 'Pauli ist ein kleiner Charakter, der mit dir durch den Tag geht. Er hört zu, antwortet, erinnert sich — und macht keine Termine, sondern Stimmung.',
+    'Trusted by:': 'Geliebt von:',
+    'Leading technology users': 'Den Ersten, die mutig sind',
+    'Hey friend!': 'Hey, du!',
+    'Talkative voice': 'Echtzeit-Stimme',
+    'Mode': 'Modus',
+    'Top rated app': 'Beste App-Bewertung',
+    'Based on 1200+ reviews': 'Aus 1.200+ Bewertungen',
+    // Product cards (chunk content)
+    'Immerse yourself in sound': 'Hör ihm zu, er hört dir zu.',
+    'Dome HarmonyX features a sophisticated noise reduction system that delivers crystal-clear audio. Designed for clarity and precision, it lets you feel every detail of your favorite music or movie soundtrack.': 'Pauli versteht dich in mehreren Sprachen — direkt, ohne Cloud-Verzögerung. Du redest. Er reagiert. Wie ein guter Freund, der wirklich zuhört.',
+    'Smart, Adaptive Lighting': 'Berührt. Antwortet. Erinnert sich.',
+    'Set the perfect mood with adaptive lighting that automatically adjusts brightness and color temperature based on the time of day, your activity, or your preferences.': 'Pauli reagiert auf Berührung, lernt deine Vorlieben kennen und merkt sich Dinge zwischen Gesprächen. Mit der Zeit wird er ein bisschen mehr dein Pauli.',
+    // Gallery
+    'QUORA': 'PAULI',
+    'It takes care of the background so you can stay focused, sharp, and in full control of your day.': 'Er kümmert sich um die kleinen Momente. Damit du den Rest hast.',
+    // Testimonials
+    '2025 Best Product': '2026 Trend-Produkt',
+    'from Awwardo': 'auf TikTok',
+    'Trusted by product builders': 'Schon gesehen bei',
+    'Staying focused, moving quickly, and always aiming for high-quality work.': 'Klein. Charaktervoll. Schon viral.',
+    'Founder Mode is hard enough—loved makes my home run itself so I can focus on what matters.': 'Founder-Modus ist anstrengend genug — Pauli macht den Schreibtisch lebendig, damit ich mich auf den Rest konzentrieren kann.',
+    // Blog
+    'BRAND Stories': 'Pauli-Geschichten',
+    'BRAND Stories  ': 'Pauli-Geschichten',
+    'Discover expert tips, smart home guides, and the latest updates on living intelligently with loved.': 'Geschichten von Menschen, die einen kleinen Roboter zu Hause haben.',
+    'Focus Mode, But for Your House': 'Eigentlich sollte das Kind mit ihm spielen.',
+    'Smart home': 'Familie',
+    'Marketing': 'Studio',
+    'Productivity': 'Office',
+    // FAQ
+    'Ask less. Know more': 'Fragen, die du dir vermutlich stellst.',
+    'Quick answers to the things you’re wondering—so you can get back to living smarter.': 'Antworten zu Vorbestellung, Sprachen und Datenschutz.',
+    'Quick answers to the things you\'re wondering—so you can get back to living smarter.': 'Antworten zu Vorbestellung, Sprachen und Datenschutz.',
+    'What is loved and what does it do?': 'Wann wird geliefert?',
+    'loved is a smart home device brand that connects and controls your home appliances, lighting, security, and more through a single app or voice commands. It brings convenience, automation, and energy efficiency to your everyday life.': 'Pre-orders ab Q3 2026. Du bekommst eine Email mit Tracking, sobald dein Pauli versendet wird.',
+    'How do I set up my loved device?': 'Welche Sprachen versteht er?',
+    'Simply plug in your device, download the loved Smart app from the App Store or Google Play, and follow the step-by-step setup guide. Most devices can be connected to your Wi-Fi and configured in under 5 minutes.': 'Deutsch und Englisch im ersten Release. Französisch, Spanisch und Italienisch folgen. Verarbeitung läuft lokal — kein Cloud-Lag.',
+    'Is loved compatible with Alexa, Google Assistant, or Siri?': 'Brauche ich eine App?',
+    'Yes! loved smart devices are compatible with Amazon Alexa, Google Assistant, and Apple Siri Shortcuts, allowing you to control your home with simple voice commands.': 'Pauli funktioniert eigenständig. Die kostenlose Companion-App ist optional — für Persönlichkeits-Anpassung und Software-Updates.',
+    'Can I control my loved devices when I\'m not at home?': 'Wie ist es mit Privacy?',
+    'Can I control my loved devices when I’m not at home?': 'Wie ist es mit Privacy?',
+    'Absolutely. As long as your devices are connected to Wi-Fi and you have internet access on your phone, you can control, schedule, and monitor them from anywhere using the loved app.': 'Alle Sprach-Verarbeitung läuft lokal. Keine Cloud, keine fremden Server, keine Daten an Dritte. Wir sind eine deutsche GmbH und halten uns an die DSGVO.',
+    'Is my data safe with loved?': 'Garantie?',
+    'Yes. We take your privacy seriously. loved uses end-to-end encryption and follows industry-standard data protection practices to keep your personal information secure.': '2 Jahre Hersteller-Garantie. Bei Defekt: kostenfreier Austausch.',
+    'Do loved devices require a hub?': 'Rückgabe möglich?',
+    'Most loved devices are hub-free and connect directly to your Wi-Fi network. However, certain automation features or legacy products may require the loved Smart Hub for optimal performance.': '30 Tage Rückgaberecht, voller Refund — keine Fragen. Vorbestellungen kannst du jederzeit stornieren bis zum Versand.',
+    'Can I set up automation or routines with loved devices?': 'Wie lange hält der Akku?',
+    'Yes. You can create custom schedules, routines, and triggers in the loved Smart app—for example, turning on lights at sunset or activating a security mode when you leave home.': 'Ein voller Tag aktive Nutzung. Steht Pauli auf seiner Ladeschale, ist er immer bereit.',
+    'What should I do if my device isn’t responding?': 'Support?',
+    'What should I do if my device isn\'t responding?': 'Support?',
+    'If your loved device isn’t responding, start by making sure it’s connected to power and your Wi-Fi network.': 'hello@higrate.com — wir antworten innerhalb 24h.',
+    'If your loved device isn\'t responding, start by making sure it\'s connected to power and your Wi-Fi network.': 'hello@higrate.com — wir antworten innerhalb 24h.',
+    // Misc
+    'loved': 'Pauli',
+    'Awwardo': 'TikTok',
+  };
+
+  // Word boundaries — only replace exact textNode contents (don't break attributes)
+  function translate() {
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+    var node;
+    var count = 0;
+    while ((node = walker.nextNode())) {
+      var t = node.nodeValue;
+      if (!t || t.length < 2) continue;
+      // Exact match swap
+      var trimmed = t.trim();
+      if (MAP[trimmed]) {
+        var pad = t.match(/^(\s*)([\s\S]*?)(\s*)$/);
+        node.nodeValue = (pad ? pad[1] : '') + MAP[trimmed] + (pad ? pad[3] : '');
+        count++;
+        continue;
+      }
+      // Substring swap for 'loved' brand — careful with case
+      if (/\bloved\b/.test(t) && !/Pauli/.test(t)) {
+        var replaced = t.replace(/\bloved\b/g, 'Pauli');
+        if (replaced !== t) { node.nodeValue = replaced; count++; }
+      }
+    }
+    return count;
+  }
+
+  function loop() {
+    var n = translate();
+    return n;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      setTimeout(loop, 600); setTimeout(loop, 1500); setTimeout(loop, 3000);
+    });
+  } else { setTimeout(loop, 600); setTimeout(loop, 1500); setTimeout(loop, 3000); }
+
+  // Watch for Framer's lazy/scroll hydration
+  var mo = new MutationObserver(function () { clearTimeout(window.__paulit); window.__paulit = setTimeout(loop, 250); });
+  mo.observe(document.body, { childList: true, subtree: true, characterData: true });
 })();
 </script>
 <!-- End of bodyEnd -->
